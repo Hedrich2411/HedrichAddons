@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="change_user_session.UserSystray" owl="1">
+        <div t-if="state.isAllowed">
+            <button type="button" class="o_nav_entry o-no-caret border-0 pe-3" t-on-click="openChangeUserWizard">
+                <i class="fa fa-lg fa-user" role="img"></i>
+            </button>
+        </div>
+    </t>
+</templates>

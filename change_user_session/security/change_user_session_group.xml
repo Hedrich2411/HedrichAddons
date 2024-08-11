@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="change_user_session_group_manager" model="res.groups">
+        <field name="name">Change Session Manager</field>
+    </record>
+</odoo>

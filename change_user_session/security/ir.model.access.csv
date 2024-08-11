@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_change_user_session_wizard_manager,change_user_session_wizard_manager,model_change_user_session_wizard,change_user_session.change_user_session_group_manager,1,1,1,1

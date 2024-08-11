@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View change.user.session.wizard form -->
+    <record id="view_change_user_session_wizard_form" model="ir.ui.view">
+        <field name="name">view.change.user.session.wizard.form</field>
+        <field name="model">change.user.session.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change User Session Wizard">
+                <group>
+                    <field name="user_id" />
+                </group>
+                <footer>
+                    <button name="change_session" type="object" string="Login" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action change.user.session.wizard -->
+    <record id="action_change_user_session_wizard" model="ir.actions.act_window">
+        <field name="name">Change User Session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">change.user.session.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
