@@ -44,4 +44,4 @@ class ChangeUserSessionWizard(models.TransientModel):
                 'tag': 'reload',
             }
         else:
-            raise UserError(_('No se pudo obtener la solicitud HTTP actual.'))
+            raise UserError(_('The current HTTP application could not be obtained.'))

@@ -17,6 +17,7 @@
             'change_user_session/static/src/components/UserSystray/UserSystray.xml'
         ],
     },
+    'images': ['static/description/banner.png'],
     'application': True,
     'installable': True,
     'auto_install': False,
