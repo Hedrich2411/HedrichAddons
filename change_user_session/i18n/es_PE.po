@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* change_user_session
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-07 04:53+0000\n"
+"PO-Revision-Date: 2026-06-07 04:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: change_user_session
+#: model_terms:ir.ui.view,arch_db:change_user_session.view_change_user_session_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: change_user_session
+#: model:res.groups,name:change_user_session.change_user_session_group_manager
+msgid "Change Session Manager"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.actions.act_window,name:change_user_session.action_change_user_session_wizard
+msgid "Change User Session"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model,name:change_user_session.model_change_user_session_wizard
+#: model_terms:ir.ui.view,arch_db:change_user_session.view_change_user_session_wizard_form
+msgid "Change User Session Wizard"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: change_user_session
+#: model_terms:ir.ui.view,arch_db:change_user_session.view_change_user_session_wizard_form
+msgid "Login"
+msgstr ""
+
+#. module: change_user_session
+#. odoo-python
+#: code:addons/change_user_session/wizard/change_user_session_wizard.py:0
+msgid "The current HTTP application could not be obtained."
+msgstr ""
+
+#. module: change_user_session
+#: model:ir.model.fields,field_description:change_user_session.field_change_user_session_wizard__user_id
+msgid "User"
+msgstr ""

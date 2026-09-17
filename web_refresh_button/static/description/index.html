@@ -1,0 +1,106 @@
+<section class="oe_container">
+    <div class="oe_row text-center" style="padding:28px 0 4px;">
+        <img src="logo.png" alt="Hedrich" style="height:84px;">
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12 text-center">
+            <h1 class="oe_slogan" style="color:#082B3D;">Control Panel Refresh Button</h1>
+            <h3 class="oe_slogan" style="color:#666; font-weight:300;">
+                Reload the data you are looking at &mdash; without reloading the page.
+            </h3>
+            <p class="oe_mt32" style="font-size:16px; color:#444; max-width:780px; margin:24px auto 0;">
+                Odoo has no refresh button. Users hit <kbd>F5</kbd>, wait for the whole
+                client to boot again and lose their place. This module adds a small
+                refresh button to the control panel that reloads only the current
+                view's records.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="background:#f7f7f7; padding:48px 0;">
+    <div class="oe_row text-center" style="max-width:1100px; margin:0 auto;">
+        <h2 class="oe_slogan" style="color:#082B3D;">Key Features</h2>
+
+        <div class="oe_span4" style="padding:24px;">
+            <div style="background:#fff; padding:32px 24px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); height:100%;">
+                <i class="fa fa-refresh fa-3x" style="color:#082B3D;"></i>
+                <h3 style="margin-top:16px;">One click</h3>
+                <p style="color:#666;">
+                    A refresh button sits next to the pager in every backend view:
+                    list, kanban, pivot, graph, calendar and form.
+                </p>
+            </div>
+        </div>
+
+        <div class="oe_span4" style="padding:24px;">
+            <div style="background:#fff; padding:32px 24px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); height:100%;">
+                <i class="fa fa-bolt fa-3x" style="color:#082B3D;"></i>
+                <h3 style="margin-top:16px;">Keeps your place</h3>
+                <p style="color:#666;">
+                    Breadcrumbs, filters and the current record stay put. Only the
+                    data is fetched again.
+                </p>
+            </div>
+        </div>
+
+        <div class="oe_span4" style="padding:24px;">
+            <div style="background:#fff; padding:32px 24px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); height:100%;">
+                <i class="fa fa-feather fa-3x" style="color:#082B3D;"></i>
+                <h3 style="margin-top:16px;">Nothing to configure</h3>
+                <p style="color:#666;">
+                    No models, no settings, no security groups. One QWeb template
+                    on top of the standard control panel.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:48px 0;">
+    <div class="oe_row text-center" style="max-width:900px; margin:0 auto;">
+        <h2 class="oe_slogan" style="color:#082B3D;">How It Works</h2>
+        <p style="font-size:15px; color:#555; max-width:760px; margin:0 auto;">
+            The button triggers Odoo's own <code>soft_reload</code> client action,
+            the same mechanism the framework uses internally after installing a
+            module. No custom RPC, no page reload, no cache tricks.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container" style="padding:48px 0; background:#f7f7f7;">
+    <div class="oe_row text-center" style="max-width:900px; margin:0 auto;">
+        <h2 class="oe_slogan" style="color:#082B3D;">Technical Details</h2>
+        <table style="width:100%; max-width:640px; margin:24px auto; border-collapse:collapse; text-align:left;">
+            <tr style="border-bottom:1px solid #e0e0e0;">
+                <td style="padding:12px 16px; font-weight:600; color:#555; width:40%;">Odoo Version</td>
+                <td style="padding:12px 16px; color:#333;">19.0 (Community &amp; Enterprise)</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e0e0;">
+                <td style="padding:12px 16px; font-weight:600; color:#555;">Dependencies</td>
+                <td style="padding:12px 16px; color:#333;"><code>web</code></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e0e0;">
+                <td style="padding:12px 16px; font-weight:600; color:#555;">License</td>
+                <td style="padding:12px 16px; color:#333;">LGPL-3</td>
+            </tr>
+            <tr>
+                <td style="padding:12px 16px; font-weight:600; color:#555;">Frontend</td>
+                <td style="padding:12px 16px; color:#333;">QWeb inheritance of <code>web.ControlPanel</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section class="oe_container" style="background:#082B3D; padding:48px 0; color:#fff;">
+    <div class="oe_row text-center">
+        <h2 class="oe_slogan" style="color:#fff;">Compatible</h2>
+        <h3 style="color:#fff; font-weight:300;">Odoo 19 &middot; Community &amp; Enterprise</h3>
+        <p style="margin-top:16px; color:#D9D9D9;">
+            Need a feature or found a bug? Contact <strong>Hedrich</strong> &mdash; <a href="mailto:hedrich2411@gmail.com" style="color:#fff; text-decoration:underline;">hedrich2411@gmail.com</a>
+        </p>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="web_refresh_button.ControlPanel" t-inherit="web.ControlPanel" t-inherit-mode="extension">
+        <!-- ponytail: shows on every view (incl. form). Wrap in
+             t-if="['list','kanban','pivot','graph','calendar'].includes(env.config.viewType)"
+             to limit to multi-record views. -->
+        <xpath expr="//div[hasclass('o_cp_pager')]" position="before">
+            <button class="btn btn-secondary o_refresh_button"
+                    t-on-click="() => this.actionService.doAction('soft_reload')"
+                    title="Refresh" aria-label="Refresh">
+                <i class="fa fa-fw fa-refresh"/>
+            </button>
+        </xpath>
+    </t>
+
+</templates>
