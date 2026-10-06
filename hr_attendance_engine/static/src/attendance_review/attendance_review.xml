@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="hr_attendance_engine.AttendanceReview">
+        <Layout display="props.display">
+            <t t-set-slot="control-panel-additional-actions">
+                <CogMenu/>
+            </t>
+            <t t-set-slot="layout-actions">
+                <SearchBar toggler="searchBarToggler"/>
+            </t>
+            <t t-set-slot="control-panel-navigation-additional">
+                <t t-component="searchBarToggler.component"
+                   t-props="searchBarToggler.props"/>
+            </t>
+
+            <div class="o_attendance_review d-flex flex-column h-100 bg-view">
+
+                <div class="d-flex align-items-center gap-1 px-3 py-2 border-bottom">
+                    <div class="btn-group d-print-none">
+                        <button class="btn btn-secondary" title="Previous"
+                                t-on-click="() => this.shiftRange(-1)">
+                            <i class="oi oi-arrow-left"/>
+                        </button>
+                        <button class="btn btn-secondary" title="Next"
+                                t-on-click="() => this.shiftRange(1)">
+                            <i class="oi oi-arrow-right"/>
+                        </button>
+                    </div>
+                    <button class="btn btn-secondary" t-on-click="today">Today</button>
+                    <ViewScaleSelector scales="scales"
+                                       currentScale="state.scale"
+                                       setScale.bind="setScale"/>
+                    <span class="fw-bold ms-2" t-esc="rangeLabel"/>
+
+                    <div class="ms-auto d-flex align-items-center gap-2">
+                        <span class="text-muted small">
+                            <t t-esc="reviewedCount.reviewed"/> /
+                            <t t-esc="reviewedCount.total"/> reviewed
+                        </span>
+                        <button class="btn btn-primary" t-on-click="() => this.markReviewed('range')">
+                            Mark all as reviewed
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-grow-1 overflow-hidden">
+
+                    <div class="o_attendance_review_grid flex-grow-1 overflow-auto">
+                        <table class="table table-sm table-hover mb-0">
+                            <thead class="sticky-top bg-view">
+                                <tr>
+                                    <th class="o_attendance_review_name bg-view">Employee</th>
+                                    <th t-foreach="state.dates" t-as="day" t-key="day.date"
+                                        class="text-center"
+                                        t-att-class="day.is_weekend ? 'text-muted' : ''">
+                                        <t t-esc="day.label"/>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="state.rows" t-as="row" t-key="row.id">
+                                    <td class="o_attendance_review_name bg-view text-truncate"
+                                        t-esc="row.name"/>
+                                    <td t-foreach="row.cells" t-as="cell" t-key="cell.date"
+                                        class="text-center cursor-pointer user-select-none"
+                                        t-att-class="{
+                                            [cellClass(cell)]: true,
+                                            'table-active': isSelected(row, cell),
+                                        }"
+                                        t-att-title="cell.incongruency or cell.schedule"
+                                        t-on-click="() => this.selectCell(row, cell)">
+                                        <span t-esc="cellLabel(cell)"/>
+                                        <i t-if="cell.is_reviewed"
+                                           class="fa fa-check text-success ms-1"
+                                           title="Reviewed"/>
+                                        <i t-if="cell.is_locked"
+                                           class="fa fa-lock text-muted ms-1"
+                                           title="Locked"/>
+                                    </td>
+                                </tr>
+                                <tr t-if="!state.rows.length and !state.loading">
+                                    <td t-att-colspan="state.dates.length + 1"
+                                        class="text-center text-muted py-4">
+                                        No employee matches the current filter.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div t-if="state.selected"
+                         class="o_attendance_review_panel border-start overflow-auto p-3">
+                        <div class="d-flex align-items-start mb-1">
+                            <h5 class="mb-0 flex-grow-1"
+                                t-esc="state.selected.employeeName"/>
+                            <button class="btn-close" title="Close"
+                                    t-on-click="() => this.state.selected = null"/>
+                        </div>
+                        <div class="text-muted small mb-2">
+                            <t t-esc="state.selected.cell.date"/> ·
+                            <t t-esc="state.selected.cell.schedule"/>
+                        </div>
+
+                        <div t-if="state.selected.cell.incongruency"
+                             class="alert alert-warning py-2 px-3 small" role="alert">
+                            <t t-esc="state.selected.cell.incongruency"/>
+                        </div>
+                        <div t-if="state.selected.cell.is_locked"
+                             class="alert alert-info py-2 px-3 small" role="alert">
+                            This workday is locked. Unlock it to edit its attendances.
+                        </div>
+
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr t-foreach="state.selected.cell.punches" t-as="punch"
+                                    t-key="punch.id">
+                                    <td>
+                                        <t t-esc="punch.check_in"/> →
+                                        <t t-if="punch.check_out" t-esc="punch.check_out"/>
+                                        <span t-else="" class="text-danger">—</span>
+                                    </td>
+                                    <td class="text-end text-nowrap">
+                                        <button class="btn btn-link btn-sm p-0 me-2"
+                                                t-on-click="() => this.openPunch(punch.id)">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-link btn-sm p-0 text-danger"
+                                                t-on-click="() => this.archivePunch(punch.id)">
+                                            Archive
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr t-if="!state.selected.cell.punches.length">
+                                    <td colspan="2" class="text-muted">No attendance.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="btn btn-secondary btn-sm w-100 mb-2"
+                                t-on-click="addPunch">
+                            <i class="fa fa-plus me-1"/>Add attendance
+                        </button>
+                        <button class="btn btn-primary btn-sm w-100"
+                                t-att-disabled="state.selected.cell.is_locked"
+                                t-on-click="() => this.markReviewed('cell')">
+                            Mark day as reviewed
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    </t>
+
+</templates>

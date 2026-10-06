@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_absence_list" model="ir.ui.view">
+        <field name="name">hr.absence.list</field>
+        <field name="model">hr.absence</field>
+        <field name="arch" type="xml">
+            <list string="Absences" sample="1"
+                  decoration-muted="state == 'cancelled'"
+                  decoration-danger="state == 'rejected'"
+                  decoration-success="state == 'approved'">
+                <field name="employee_id"/>
+                <field name="type_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="unit"/>
+                <field name="duration_days" sum="Total days"/>
+                <field name="duration_hours" widget="float_time" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-warning="state == 'confirmed'"
+                       decoration-success="state == 'approved'"
+                       decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_absence_form" model="ir.ui.view">
+        <field name="name">hr.absence.form</field>
+        <field name="model">hr.absence</field>
+        <field name="arch" type="xml">
+            <form string="Absence">
+                <header>
+                    <button name="action_confirm" type="object"
+                            string="Confirm" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object"
+                            string="Approve" class="btn-primary"
+                            invisible="state != 'confirmed'"/>
+                    <button name="action_reject" type="object"
+                            string="Reject"
+                            invisible="state not in ('confirmed', 'approved')"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            invisible="state in ('cancelled', 'draft')"/>
+                    <button name="action_reset_to_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state in ('draft', 'approved')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,approved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="type_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="category" invisible="1"/>
+                            <field name="consumes_vacation" invisible="1"/>
+                            <field name="requires_document" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="unit"
+                                   readonly="state != 'draft'"/>
+                            <field name="half_day_period" widget="radio"
+                                   options="{'horizontal': true}"
+                                   invisible="unit != 'half_day'"
+                                   readonly="state != 'draft'"/>
+                            <field name="date_from"
+                                   readonly="state != 'draft'"/>
+                            <field name="date_to"
+                                   readonly="state != 'draft'"/>
+                            <field name="hour_from" widget="float_time"
+                                   invisible="unit != 'hour'"
+                                   readonly="state != 'draft'"
+                                   required="unit == 'hour'"/>
+                            <field name="hour_to" widget="float_time"
+                                   invisible="unit != 'hour'"
+                                   readonly="state != 'draft'"
+                                   required="unit == 'hour'"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Duration">
+                            <field name="duration_days"/>
+                            <field name="duration_hours" widget="float_time"/>
+                        </group>
+                        <group string="Approval" invisible="state == 'draft'">
+                            <field name="approver_id"/>
+                            <field name="approved_at"/>
+                            <field name="vacation_period_id"
+                                   invisible="not consumes_vacation"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Reason" name="reason">
+                            <field name="reason"
+                                   placeholder="Optional context for the manager…"
+                                   readonly="state not in ('draft', 'confirmed')"/>
+                        </page>
+                        <page string="Documents" name="documents">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_absence_search" model="ir.ui.view">
+        <field name="name">hr.absence.search</field>
+        <field name="model">hr.absence</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="type_id"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state', '=', 'confirmed')]"/>
+                <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                <filter name="rejected" string="Rejected" domain="[('state', '=', 'rejected')]"/>
+                <separator/>
+                <filter name="cat_vacation" string="Vacation" domain="[('category', '=', 'vacation')]"/>
+                <filter name="cat_sick" string="Sick" domain="[('category', '=', 'sick')]"/>
+                <filter name="cat_permission" string="Permission" domain="[('category', '=', 'permission')]"/>
+                <filter name="cat_unpaid" string="Unpaid" domain="[('category', '=', 'unpaid')]"/>
+                <separator/>
+                <filter name="unit_hour" string="Hourly" domain="[('unit', '=', 'hour')]"/>
+                <filter name="unit_full_day" string="Full day" domain="[('unit', '=', 'day')]"/>
+                <separator/>
+                <filter name="ongoing" string="Ongoing" domain="[('date_from', '&lt;=', 'today'), ('date_to', '&gt;=', 'today')]"/>
+                <filter name="upcoming" string="Upcoming" domain="[('date_from', '&gt;', 'today')]"/>
+                <separator/>
+                <filter name="filter_date_from" date="date_from" string="Start date"/>
+                <group>
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'type_id'}"/>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category'}"/>
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}"/>
+                    <separator/>
+                    <filter name="group_date_from" string="Start date" context="{'group_by': 'date_from'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_absence" model="ir.actions.act_window">
+        <field name="name">Absences</field>
+        <field name="res_model">hr.absence</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

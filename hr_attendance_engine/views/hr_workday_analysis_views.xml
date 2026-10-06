@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Odoo's own attendance pivot/graph measures hr.attendance's
+        worked_hours and overtime, computed against resource.calendar.
+        Those numbers disagree with the engine, so that menu is hidden and
+        replaced by the same analysis over hr.workday.
+    -->
+
+    <record id="view_hr_workday_pivot" model="ir.ui.view">
+        <field name="name">hr.workday.pivot</field>
+        <field name="model">hr.workday</field>
+        <field name="arch" type="xml">
+            <pivot string="Workday Analysis" sample="1">
+                <field name="employee_id" type="row"/>
+                <field name="date" interval="month" type="col"/>
+                <field name="worked_hours" type="measure" widget="float_time"/>
+                <field name="expected_hours" type="measure" widget="float_time"/>
+                <field name="late_hours" type="measure" widget="float_time"/>
+                <field name="unauthorized_absence_hours" type="measure"
+                       widget="float_time"/>
+                <field name="overtime_paid_hours" type="measure"
+                       widget="float_time"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_hr_workday_graph" model="ir.ui.view">
+        <field name="name">hr.workday.graph</field>
+        <field name="model">hr.workday</field>
+        <field name="arch" type="xml">
+            <graph string="Workday Analysis" type="bar" sample="1">
+                <field name="employee_id" type="row"/>
+                <field name="date" interval="week" type="col"/>
+                <field name="worked_hours" type="measure" widget="float_time"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_hr_workday_analysis" model="ir.actions.act_window">
+        <field name="name">Workday Analysis</field>
+        <field name="res_model">hr.workday</field>
+        <field name="view_mode">pivot,graph,list,form</field>
+        <field name="search_view_id" ref="view_hr_workday_search"/>
+        <field name="context">{'search_default_group_employee': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">No workday to analyse</p>
+            <p>Generate workdays for a period and the engine's figures will
+            show up here.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_hr_workday_analysis"
+              name="Workday Analysis"
+              parent="hr_attendance.menu_hr_attendance_reporting"
+              action="action_hr_workday_analysis"
+              sequence="10"/>
+
+    <!-- Native pivot/graph on hr.attendance: inconsistent with the engine. -->
+    <record id="hr_attendance.menu_hr_attendance_attendance_reporting"
+            model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

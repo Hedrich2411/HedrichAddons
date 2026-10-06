@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Hide Odoo's native worked_hours / overtime columns and buttons from
+        the attendance list view. They are computed against resource.calendar,
+        not against our hr.schedule, so the numbers would not match what our
+        engine produces and would confuse users.
+    -->
+    <record id="view_attendance_tree_engine_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.list.engine.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="replace"/>
+            <xpath expr="//field[@name='worked_hours']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='overtime_hours']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='validated_overtime_hours']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='overtime_status']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+        Same cleanup on the form view. worked_hours subtracts the calendar's
+        lunch, the overtime fields and page come from Odoo's overtime rules:
+        the engine's figures live on the workday.
+    -->
+    <record id="hr_attendance_view_form_engine_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.form.engine.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='overtime_status']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='overtime_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='validated_overtime_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//label[@for='validated_overtime_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='worked_hours']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[field[@name='linked_overtime_ids']]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Punches of the month, opened from the employee's own public profile. -->
+    <record id="hr_attendance_employee_simple_tree_engine_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.simple.list.engine.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_employee_simple_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="worked_hours" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </field>
+            <field name="validated_overtime_hours" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </field>
+            <field name="overtime_status" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Auto check-out is switched off by this module (see hooks.py). -->
+    <record id="hr_attendance_view_filter_engine_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.search.engine.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
+        <field name="arch" type="xml">
+            <filter name="auto_check" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+        </field>
+    </record>
+
+    <!-- Department kanban: the native report reads calendar-based hours. -->
+    <record id="hr_department_view_kanban_engine_inherit" model="ir.ui.view">
+        <field name="name">hr.department.kanban.engine.inherit</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr_attendance.hr_department_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_manage_reports')]//a[@groups='hr_attendance.group_hr_attendance_officer']"
+                   position="replace">
+                <a class="dropdown-item" name="%(action_hr_workday_analysis)d" type="action"
+                   groups="hr_attendance.group_hr_attendance_officer">
+                    Workdays
+                </a>
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+        Odoo's overtime rule engine is not used: hr.workday.overtime replaces
+        both its rulesets and the Management menu that approves its extra
+        hours.
+    -->
+    <record id="hr_attendance.menu_hr_attendance_overtime_rulesets" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="hr_attendance.menu_hr_attendance_view_attendances_management" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

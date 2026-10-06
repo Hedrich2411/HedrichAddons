@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_schedule_assignment_list" model="ir.ui.view">
+        <field name="name">hr.schedule.assignment.list</field>
+        <field name="model">hr.schedule.assignment</field>
+        <field name="arch" type="xml">
+            <list string="Schedule Assignments" multi_edit="1" sample="1">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="schedule_id"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_schedule_assignment_form" model="ir.ui.view">
+        <field name="name">hr.schedule.assignment.form</field>
+        <field name="model">hr.schedule.assignment</field>
+        <field name="arch" type="xml">
+            <form string="Schedule Assignment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="schedule_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_schedule_assignment_search" model="ir.ui.view">
+        <field name="name">hr.schedule.assignment.search</field>
+        <field name="model">hr.schedule.assignment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="schedule_id"/>
+                <filter name="filter_date" date="date" string="Date"/>
+                <group>
+                    <filter name="group_schedule" string="Schedule" context="{'group_by': 'schedule_id'}"/>
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_schedule_assignment" model="ir.actions.act_window">
+        <field name="name">Schedule Assignments</field>
+        <field name="res_model">hr.schedule.assignment</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Assign schedules to employees by day</p>
+            <p>Each row binds one employee to one schedule template for a specific date.
+            Use <i>Bulk Assign</i> in the menu to fill a range at once.</p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,20 @@
+// Only what Bootstrap utilities can't express: a frozen first column while
+// the days scroll horizontally, and a stable width for the side panel.
+
+.o_attendance_review {
+    .o_attendance_review_name {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        min-width: 12rem;
+    }
+
+    thead th.o_attendance_review_name {
+        z-index: 3;
+    }
+
+    .o_attendance_review_panel {
+        width: 22rem;
+        flex: 0 0 22rem;
+    }
+}

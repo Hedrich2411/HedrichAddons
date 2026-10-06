@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_vacation_period_list" model="ir.ui.view">
+        <field name="name">hr.vacation.period.list</field>
+        <field name="model">hr.vacation.period</field>
+        <field name="arch" type="xml">
+            <list string="Vacation Periods"
+                  decoration-muted="state == 'closed'"
+                  decoration-danger="state == 'expired'"
+                  decoration-warning="state == 'exhausted'"
+                  decoration-success="state == 'open'">
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="cycle_start"/>
+                <field name="cycle_end"/>
+                <field name="days_earned" sum="Earned"/>
+                <field name="days_taken" sum="Taken"/>
+                <field name="days_paid_cash" sum="Cash"/>
+                <field name="days_remaining" sum="Remaining"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'open'"
+                       decoration-warning="state == 'exhausted'"
+                       decoration-danger="state == 'expired'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_vacation_period_form" model="ir.ui.view">
+        <field name="name">hr.vacation.period.form</field>
+        <field name="model">hr.vacation.period</field>
+        <field name="arch" type="xml">
+            <form string="Vacation Period">
+                <header>
+                    <button name="action_close" type="object"
+                            string="Close" invisible="state == 'closed'"/>
+                    <button name="action_reopen" type="object"
+                            string="Reopen" invisible="state != 'closed'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="cycle_start"/>
+                            <field name="cycle_end"/>
+                            <field name="expiry_date"/>
+                        </group>
+                        <group string="Balance (days)">
+                            <field name="days_earned"/>
+                            <field name="days_paid_cash"/>
+                            <field name="days_taken" readonly="1"/>
+                            <field name="days_remaining" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Absences" name="absences">
+                            <field name="absence_ids" readonly="1">
+                                <list>
+                                    <field name="date_from"/>
+                                    <field name="date_to"/>
+                                    <field name="type_id"/>
+                                    <field name="duration_days"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_vacation_period_search" model="ir.ui.view">
+        <field name="name">hr.vacation.period.search</field>
+        <field name="model">hr.vacation.period</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <filter name="open" string="Open" domain="[('state', '=', 'open')]"/>
+                <filter name="expired" string="Expired" domain="[('state', '=', 'expired')]"/>
+                <group>
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_vacation_period" model="ir.actions.act_window">
+        <field name="name">Vacation Periods</field>
+        <field name="res_model">hr.vacation.period</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

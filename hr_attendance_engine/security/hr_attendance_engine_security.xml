@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--
+            Global multi-company rules. Without these, a user logged into
+            company A sees the schedules / workdays / absences of company B
+            in every list view. check_company only validates writes, it does
+            not filter reads.
+        -->
+
+        <record id="hr_schedule_company_rule" model="ir.rule">
+            <field name="name">Work schedule: multi-company</field>
+            <field name="model_id" ref="model_hr_schedule"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_schedule_line_company_rule" model="ir.rule">
+            <field name="name">Work schedule line: multi-company</field>
+            <field name="model_id" ref="model_hr_schedule_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('schedule_id.company_id', '=', False),
+                      ('schedule_id.company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_schedule_assignment_company_rule" model="ir.rule">
+            <field name="name">Schedule assignment: multi-company</field>
+            <field name="model_id" ref="model_hr_schedule_assignment"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_workday_company_rule" model="ir.rule">
+            <field name="name">Workday: multi-company</field>
+            <field name="model_id" ref="model_hr_workday"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_workday_overtime_company_rule" model="ir.rule">
+            <field name="name">Additional hours: multi-company</field>
+            <field name="model_id" ref="model_hr_workday_overtime"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_absence_company_rule" model="ir.rule">
+            <field name="name">Absence: multi-company</field>
+            <field name="model_id" ref="model_hr_absence"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_vacation_period_company_rule" model="ir.rule">
+            <field name="name">Vacation period: multi-company</field>
+            <field name="model_id" ref="model_hr_vacation_period"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="hr_public_holiday_company_rule" model="ir.rule">
+            <field name="name">Public holiday: multi-company</field>
+            <field name="model_id" ref="model_hr_public_holiday"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <!--
+            Same split as native attendances: an officer only sees the
+            employees whose attendance manager they are (sick leaves carry
+            health data), "Manage all attendances" sees everyone.
+        -->
+
+        <record id="hr_schedule_assignment_rule_officer" model="ir.rule">
+            <field name="name">Schedule assignment: officer sees managed employees</field>
+            <field name="model_id" ref="model_hr_schedule_assignment"/>
+            <field name="domain_force">[('employee_id.attendance_manager_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"/>
+        </record>
+
+        <record id="hr_schedule_assignment_rule_user" model="ir.rule">
+            <field name="name">Schedule assignment: full access</field>
+            <field name="model_id" ref="model_hr_schedule_assignment"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>
+        </record>
+
+        <record id="hr_workday_rule_officer" model="ir.rule">
+            <field name="name">Workday: officer sees managed employees</field>
+            <field name="model_id" ref="model_hr_workday"/>
+            <field name="domain_force">[('employee_id.attendance_manager_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"/>
+        </record>
+
+        <record id="hr_workday_rule_user" model="ir.rule">
+            <field name="name">Workday: full access</field>
+            <field name="model_id" ref="model_hr_workday"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>
+        </record>
+
+        <record id="hr_workday_overtime_rule_officer" model="ir.rule">
+            <field name="name">Additional hours: officer sees managed employees</field>
+            <field name="model_id" ref="model_hr_workday_overtime"/>
+            <field name="domain_force">[('employee_id.attendance_manager_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"/>
+        </record>
+
+        <record id="hr_workday_overtime_rule_user" model="ir.rule">
+            <field name="name">Additional hours: full access</field>
+            <field name="model_id" ref="model_hr_workday_overtime"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>
+        </record>
+
+        <record id="hr_absence_rule_officer" model="ir.rule">
+            <field name="name">Absence: officer sees managed employees</field>
+            <field name="model_id" ref="model_hr_absence"/>
+            <field name="domain_force">[('employee_id.attendance_manager_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"/>
+        </record>
+
+        <record id="hr_absence_rule_user" model="ir.rule">
+            <field name="name">Absence: full access</field>
+            <field name="model_id" ref="model_hr_absence"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>
+        </record>
+
+        <record id="hr_vacation_period_rule_officer" model="ir.rule">
+            <field name="name">Vacation period: officer sees managed employees</field>
+            <field name="model_id" ref="model_hr_vacation_period"/>
+            <field name="domain_force">[('employee_id.attendance_manager_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"/>
+        </record>
+
+        <record id="hr_vacation_period_rule_user" model="ir.rule">
+            <field name="name">Vacation period: full access</field>
+            <field name="model_id" ref="model_hr_vacation_period"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>
+        </record>
+
+        <!--
+            hr.absence.type is a shared catalog (like product categories):
+            no company_id, visible to everyone on purpose.
+        -->
+
+    </data>
+</odoo>

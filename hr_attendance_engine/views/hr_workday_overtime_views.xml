@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_workday_overtime_list" model="ir.ui.view">
+        <field name="name">hr.workday.overtime.list</field>
+        <field name="model">hr.workday.overtime</field>
+        <field name="arch" type="xml">
+            <list string="Additional hours" sample="1"
+                  decoration-muted="state == 'rejected'"
+                  decoration-success="state == 'approved'">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="type"/>
+                <field name="hour_from" widget="float_time"/>
+                <field name="hour_to" widget="float_time"/>
+                <field name="duration_hours" widget="float_time" sum="Total"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-success="state == 'approved'"
+                       decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_workday_overtime_form" model="ir.ui.view">
+        <field name="name">hr.workday.overtime.form</field>
+        <field name="model">hr.workday.overtime</field>
+        <field name="arch" type="xml">
+            <form string="Additional hours">
+                <header>
+                    <button name="action_approve" type="object"
+                            string="Approve" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_reject" type="object"
+                            string="Reject"
+                            invisible="state == 'rejected'"/>
+                    <button name="action_reset_to_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="type" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="hour_from" widget="float_time"
+                                   readonly="state != 'draft'"/>
+                            <field name="hour_to" widget="float_time"
+                                   readonly="state != 'draft'"/>
+                            <field name="duration_hours" widget="float_time"/>
+                            <field name="workday_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Approval" invisible="state == 'draft'">
+                        <field name="approver_id"/>
+                        <field name="approved_at"/>
+                    </group>
+                    <separator string="Reason"/>
+                    <field name="reason" placeholder="What justifies the additional time?"
+                           readonly="state != 'draft'"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_workday_overtime_search" model="ir.ui.view">
+        <field name="name">hr.workday.overtime.search</field>
+        <field name="model">hr.workday.overtime</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="date"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                <separator/>
+                <filter name="rejected" string="Rejected" domain="[('state', '=', 'rejected')]"/>
+                <separator/>
+                <filter name="type_paid" string="Paid" domain="[('type', '=', 'paid')]"/>
+                <filter name="type_comp" string="Compensatory" domain="[('type', '=', 'compensatory')]"/>
+                <separator/>
+                <filter name="filter_date" date="date" string="Date"/>
+                <group>
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'type'}"/>
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}"/>
+                    <separator/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_workday_overtime" model="ir.actions.act_window">
+        <field name="name">Additional hours</field>
+        <field name="res_model">hr.workday.overtime</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

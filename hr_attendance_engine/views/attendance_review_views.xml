@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        The grid rows are employees, so the standard search bar filters them
+        (department, name, active). The cells are fetched per range from
+        hr.workday._review_grid, which runs the engine without persisting.
+    -->
+    <record id="view_hr_employee_attendance_review" model="ir.ui.view">
+        <field name="name">hr.employee.attendance.review</field>
+        <field name="model">hr.employee</field>
+        <field name="type">attendance_review</field>
+        <field name="arch" type="xml">
+            <attendance_review string="Attendance Review"/>
+        </field>
+    </record>
+
+    <record id="action_attendance_review" model="ir.actions.act_window">
+        <field name="name">Attendance Review</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">attendance_review</field>
+        <field name="view_id" ref="view_hr_employee_attendance_review"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Review the punches before
+            generating workdays</p>
+            <p>Bad or missing attendances show up here day by day. Fix them,
+            then run <i>Generate Workdays</i>.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_attendance_review"
+              name="Attendance Review"
+              parent="menu_hr_attendance_engine_root"
+              action="action_attendance_review"
+              sequence="4"
+              groups="hr_attendance.group_hr_attendance_officer"/>
+
+</odoo>

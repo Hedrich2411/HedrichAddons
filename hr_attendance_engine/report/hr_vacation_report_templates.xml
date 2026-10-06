@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_vacation_document">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <t t-call="hr_attendance_engine.report_styles"/>
+
+                    <div class="o_att_head">
+                        <div style="font-size:13px; font-weight:bold;"
+                             t-out="company.name"/>
+                        <div class="text-center">
+                            <div t-att-style="'font-size:16px; font-weight:bold; color:%s;' % brand">
+                                VACATION REPORT
+                            </div>
+                            <div style="font-size:11px; font-weight:bold;">
+                                FROM: <span t-out="date_from" t-options="{'widget': 'date'}"/>
+                                TO: <span t-out="date_to" t-options="{'widget': 'date'}"/>
+                            </div>
+                        </div>
+                        <div class="text-end" style="font-size:10px; font-weight:bold;">
+                            PRINTED:
+                            <span t-out="printed_on" t-options="{'widget': 'datetime'}"/>
+                        </div>
+                    </div>
+
+                    <t t-foreach="blocks" t-as="block">
+                        <div t-att-style="'font-size:12px; font-weight:bold; margin-top:14px; color:%s;' % brand"
+                             t-out="block['employee'].name"/>
+
+                        <div style="font-size:10px; font-weight:bold; margin-top:6px;">
+                            Vacation periods
+                        </div>
+                        <table class="o_att_table">
+                            <thead>
+                                <tr t-att-style="'color:%s;' % brand">
+                                    <th>Period</th>
+                                    <th>Cycle start</th>
+                                    <th>Cycle end</th>
+                                    <th>Expiry</th>
+                                    <th>Status</th>
+                                    <th>Earned</th>
+                                    <th>Taken</th>
+                                    <th>Paid in cash</th>
+                                    <th>Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="block['periods']" t-as="period">
+                                    <td t-out="period.name"/>
+                                    <td t-out="period.cycle_start" t-options="{'widget': 'date'}"/>
+                                    <td t-out="period.cycle_end" t-options="{'widget': 'date'}"/>
+                                    <td t-out="period.expiry_date" t-options="{'widget': 'date'}"/>
+                                    <td t-out="period.state"/>
+                                    <td t-out="period.days_earned"/>
+                                    <td t-out="period.days_taken"/>
+                                    <td t-out="period.days_paid_cash"/>
+                                    <td t-out="period.days_remaining"/>
+                                </tr>
+                                <tr t-if="not block['periods']">
+                                    <td colspan="9">No vacation period defined.</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="o_att_total" t-att-style="'color:%s;' % brand">
+                                    <td colspan="5">TOTAL</td>
+                                    <td t-out="block['totals']['earned']"/>
+                                    <td t-out="block['totals']['taken']"/>
+                                    <td t-out="block['totals']['cash']"/>
+                                    <td t-out="block['totals']['remaining']"/>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <div style="font-size:10px; font-weight:bold; margin-top:14px;">
+                            Vacation absences in the selected range
+                        </div>
+                        <table class="o_att_table">
+                            <thead>
+                                <tr t-att-style="'color:%s;' % brand">
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Type</th>
+                                    <th>Days</th>
+                                    <th>Status</th>
+                                    <th>Period</th>
+                                    <th>Approved by</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="block['absences']" t-as="absence">
+                                    <td t-out="absence.date_from" t-options="{'widget': 'date'}"/>
+                                    <td t-out="absence.date_to" t-options="{'widget': 'date'}"/>
+                                    <td t-out="absence.type_id.name"/>
+                                    <td t-out="absence.duration_days"/>
+                                    <td t-out="absence.state"/>
+                                    <td t-out="absence.vacation_period_id.name"/>
+                                    <td t-out="absence.approver_id.name"/>
+                                </tr>
+                                <tr t-if="not block['absences']">
+                                    <td colspan="7">No vacation taken in this range.</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="o_att_total" t-att-style="'color:%s;' % brand">
+                                    <td colspan="3">TOTAL APPROVED</td>
+                                    <td t-out="block['totals']['in_range']"/>
+                                    <td/><td/><td/>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

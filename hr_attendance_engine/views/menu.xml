@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_hr_attendance_engine_root"
+              name="Scheduling"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="50"/>
+
+    <menuitem id="menu_hr_workday"
+              name="Workdays"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_workday"
+              sequence="5"/>
+
+    <menuitem id="menu_hr_workday_generate"
+              name="Generate Workdays"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_workday_generate_wizard"
+              sequence="6"/>
+
+    <menuitem id="menu_hr_workday_overtime"
+              name="Additional Hours"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_workday_overtime"
+              sequence="7"/>
+
+    <menuitem id="menu_hr_schedule_assignment"
+              name="Daily Assignments"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_schedule_assignment"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_schedule_assignment_wizard"
+              name="Bulk Assign"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_schedule_assignment_wizard"
+              sequence="15"/>
+
+    <menuitem id="menu_hr_schedule"
+              name="Schedule Templates"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_schedule"
+              sequence="20"/>
+
+    <menuitem id="menu_public_holiday"
+              name="Public Holidays"
+              parent="menu_hr_attendance_engine_root"
+              action="action_public_holiday"
+              sequence="30"/>
+
+    <menuitem id="menu_hr_attendance_engine_config"
+              name="Configuration"
+              parent="menu_hr_attendance_engine_root"
+              action="action_hr_attendance_engine_config"
+              sequence="200"
+              groups="hr_attendance.group_hr_attendance_manager"/>
+
+    <menuitem id="menu_hr_absences_root"
+              name="Absences"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="60"/>
+
+    <menuitem id="menu_hr_absence"
+              name="Absences"
+              parent="menu_hr_absences_root"
+              action="action_hr_absence"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_vacation_period"
+              name="Vacation Periods"
+              parent="menu_hr_absences_root"
+              action="action_hr_vacation_period"
+              sequence="20"/>
+
+    <menuitem id="menu_hr_absence_type"
+              name="Absence Types"
+              parent="menu_hr_absences_root"
+              action="action_hr_absence_type"
+              sequence="30"/>
+
+</odoo>

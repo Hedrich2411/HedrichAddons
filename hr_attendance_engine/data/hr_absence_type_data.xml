@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="absence_type_vacation" model="hr.absence.type">
+        <field name="name">Vacation</field>
+        <field name="code">VAC</field>
+        <field name="category">vacation</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="consumes_vacation_period" eval="True"/>
+        <field name="sequence">10</field>
+        <field name="color">10</field>
+    </record>
+
+    <record id="absence_type_sick" model="hr.absence.type">
+        <field name="name">Sick leave (medical certificate)</field>
+        <field name="code">MED</field>
+        <field name="category">sick</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="requires_document" eval="True"/>
+        <field name="sequence">20</field>
+        <field name="color">4</field>
+    </record>
+
+    <record id="absence_type_maternity" model="hr.absence.type">
+        <field name="name">Maternity leave</field>
+        <field name="code">MAT</field>
+        <field name="category">maternity</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="requires_document" eval="True"/>
+        <field name="sequence">30</field>
+        <field name="color">5</field>
+    </record>
+
+    <record id="absence_type_paternity" model="hr.absence.type">
+        <field name="name">Paternity leave</field>
+        <field name="code">PAT</field>
+        <field name="category">paternity</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="sequence">40</field>
+        <field name="color">6</field>
+    </record>
+
+    <record id="absence_type_mourning" model="hr.absence.type">
+        <field name="name">Bereavement leave</field>
+        <field name="code">LUT</field>
+        <field name="category">mourning</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="sequence">50</field>
+        <field name="color">3</field>
+    </record>
+
+    <record id="absence_type_marriage" model="hr.absence.type">
+        <field name="name">Marriage leave</field>
+        <field name="code">MAR</field>
+        <field name="category">marriage</field>
+        <field name="default_unit">day</field>
+        <field name="is_paid" eval="True"/>
+        <field name="sequence">60</field>
+        <field name="color">2</field>
+    </record>
+
+    <record id="absence_type_permission_paid" model="hr.absence.type">
+        <field name="name">Paid permission</field>
+        <field name="code">PCG</field>
+        <field name="category">permission</field>
+        <field name="default_unit">hour</field>
+        <field name="is_paid" eval="True"/>
+        <field name="sequence">70</field>
+        <field name="color">8</field>
+    </record>
+
+    <record id="absence_type_permission_unpaid" model="hr.absence.type">
+        <field name="name">Unpaid permission</field>
+        <field name="code">PSG</field>
+        <field name="category">unpaid</field>
+        <field name="default_unit">hour</field>
+        <field name="is_paid" eval="False"/>
+        <field name="sequence">80</field>
+        <field name="color">1</field>
+    </record>
+
+    <record id="absence_type_permission_compensatory" model="hr.absence.type">
+        <field name="name">Compensatory permission</field>
+        <field name="code">PCM</field>
+        <field name="category">permission</field>
+        <field name="default_unit">hour</field>
+        <field name="is_paid" eval="True"/>
+        <field name="consumes_compensatory_balance" eval="True"/>
+        <field name="sequence">90</field>
+        <field name="color">7</field>
+    </record>
+
+    <!-- One paid hour a day until the child turns one (Ley 27240): a single
+         hourly absence spanning the whole year. -->
+    <record id="absence_type_lactation" model="hr.absence.type">
+        <field name="name">Lactation permission</field>
+        <field name="code">LAC</field>
+        <field name="category">permission</field>
+        <field name="default_unit">hour</field>
+        <field name="is_paid" eval="True"/>
+        <field name="sequence">95</field>
+        <field name="color">4</field>
+    </record>
+
+</odoo>

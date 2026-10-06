@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        This module replaces resource.calendar (a fixed weekly pattern) with
+        hr.schedule + hr.schedule.assignment (a template picked per day), so
+        the native "Working Hours" field no longer drives anything the
+        engine computes. It is hidden to avoid people configuring shifts
+        there and wondering why nothing changes.
+
+        The field itself is kept: hr requires it, and hr_attendance still
+        uses it internally for its own worked_hours (which this module
+        already hides from the UI).
+
+        If Manufacturing, Project, Planning or Point of Sale ever get
+        installed, resource.calendar becomes relevant again for them —
+        revert this file then.
+    -->
+
+    <record id="view_employee_form_hide_calendar" model="ir.ui.view">
+        <field name="name">hr.employee.form.hide.resource.calendar</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//separator[@name='schedule']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Sits under the Payroll page, next to the "Schedule"
+                 separator; it is the only occurrence in this view. -->
+            <xpath expr="//field[@name='resource_calendar_id']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+        The employee list is left alone: its resource_calendar_id column is
+        already optional, so it is one click away in the column selector,
+        and inheriting it proved brittle (the field is a related on
+        hr.version, and the xpath does not resolve at load time).
+    -->
+
+    <!-- Employees > Configuration > Working Schedules -->
+    <record id="hr.menu_resource_calendar_view" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

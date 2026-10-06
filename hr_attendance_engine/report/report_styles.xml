@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Shared styles for the attendance / lateness / vacation reports. -->
+    <template id="report_styles">
+        <style>
+            .o_att_table { width:100%; border-collapse:collapse;
+                           font-size:10px; margin-bottom:6px; }
+            .o_att_table th { padding:4px 3px; font-weight:normal;
+                              text-align:center; vertical-align:bottom;
+                              border-bottom:1px solid #ccc;
+                              white-space:nowrap; }
+            .o_att_table td { padding:4px 3px; vertical-align:middle;
+                              text-align:center; white-space:nowrap; }
+            .o_att_sched { white-space:pre-line !important; }
+            .o_att_total td { font-weight:bold; border-top:1px solid #ccc; }
+            .o_att_head { display:flex; justify-content:space-between;
+                          align-items:flex-start; margin-bottom:14px; }
+            .o_att_legend { font-size:10px; margin-top:34px; }
+            .o_att_legend td { padding:3px 10px 3px 0; }
+        </style>
+    </template>
+
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Inherits hr_attendance's own extension of the form, so its Monthly
+        Hours button and Overtime Ruleset field already exist here.
+    -->
+    <record id="view_hr_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.hr.attendance.engine</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_attendance.view_employee_form_inherit_hr_attendance"/>
+        <field name="arch" type="xml">
+            <!-- Native Monthly Hours opens the punches with calendar-based
+                 hours; the value already comes from the engine, so it opens
+                 the workdays instead. -->
+            <xpath expr="//button[@name='action_open_last_month_attendances'][@groups='hr_attendance.group_hr_attendance_officer']"
+                   position="replace">
+                <button name="%(action_hr_workday)d" type="action"
+                        class="oe_stat_button" icon="fa-clock-o"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'search_default_filter_date': 1}"
+                        help="Worked hours this month">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="hours_last_month" widget="float_time"/>
+                        </span>
+                        <span class="o_stat_text">Monthly Hours</span>
+                    </div>
+                </button>
+                <button name="%(action_hr_schedule_assignment)d" type="action"
+                        class="oe_stat_button" icon="fa-calendar"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'search_default_group_schedule': 1, 'default_employee_id': id}"
+                        help="Schedule templates assigned, with their days">
+                    <field name="schedule_count" widget="statinfo" string="Schedules"/>
+                </button>
+                <button name="%(action_hr_absence)d" type="action"
+                        class="oe_stat_button" icon="fa-plane"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'default_employee_id': id}">
+                    <field name="absence_count" widget="statinfo" string="Absences"/>
+                </button>
+                <button name="%(action_hr_workday_overtime)d" type="action"
+                        class="oe_stat_button" icon="fa-hourglass-half"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'default_employee_id': id}">
+                    <field name="overtime_count" widget="statinfo" string="Additional Hours"/>
+                </button>
+                <button name="%(action_hr_vacation_period)d" type="action"
+                        class="oe_stat_button" icon="fa-sun-o"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'default_employee_id': id}"
+                        help="Vacation days earned and not taken yet">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="vacation_days_left" digits="[16, 1]"/>
+                        </span>
+                        <span class="o_stat_text">Vacation Days</span>
+                    </div>
+                </button>
+                <button name="%(action_hr_workday_overtime)d" type="action"
+                        class="oe_stat_button" icon="fa-exchange"
+                        groups="hr_attendance.group_hr_attendance_officer"
+                        context="{'search_default_employee_id': id, 'search_default_type_comp': 1}"
+                        help="Approved compensatory hours minus the compensatory permissions taken">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="compensatory_hours_balance" widget="float_time"/>
+                        </span>
+                        <span class="o_stat_text">Compensatory</span>
+                    </div>
+                </button>
+            </xpath>
+            <!-- Odoo's overtime rule engine is not used. -->
+            <field name="ruleset_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

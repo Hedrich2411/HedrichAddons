@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_workday_list" model="ir.ui.view">
+        <field name="name">hr.workday.list</field>
+        <field name="model">hr.workday</field>
+        <field name="arch" type="xml">
+            <list string="Workdays" sample="1"
+                  decoration-muted="state == 'draft'"
+                  decoration-success="state == 'processed'"
+                  decoration-bf="state == 'locked'"
+                  decoration-danger="is_absent"
+                  decoration-warning="incongruency_message">
+                <field name="incongruency_message" column_invisible="1"/>
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="day_type"/>
+                <field name="worked_hours" widget="float_time" sum="Total"/>
+                <field name="late_hours" widget="float_time" sum="Total" optional="show"/>
+                <field name="early_leave_hours" widget="float_time" sum="Total" optional="hide"/>
+                <field name="unauthorized_absence_hours" widget="float_time" sum="Total" optional="show"/>
+                <field name="holiday_worked_hours" widget="float_time" sum="Total" optional="hide"/>
+                <field name="is_absent" optional="show"/>
+                <field name="is_reviewed" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-success="state == 'processed'"
+                       decoration-warning="state == 'locked'"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_workday_form" model="ir.ui.view">
+        <field name="name">hr.workday.form</field>
+        <field name="model">hr.workday</field>
+        <field name="arch" type="xml">
+            <form string="Workday">
+                <header>
+                    <button name="action_process" type="object" string="Process"
+                            class="btn-primary" invisible="state == 'locked'"/>
+                    <button name="action_lock" type="object" string="Lock"
+                            invisible="state != 'processed'"/>
+                    <button name="action_unlock" type="object" string="Unlock"
+                            invisible="state != 'locked'"
+                            groups="hr_attendance.group_hr_attendance_manager"/>
+                    <button name="action_reset_to_draft" type="object"
+                            string="Reset to Draft" invisible="state != 'processed'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,processed,locked"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not incongruency_message">
+                        <strong>Incongruency:</strong>
+                        <field name="incongruency_message"
+                               nolabel="1" readonly="1"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                        </h1>
+                        <h2>
+                            <field name="date" readonly="state != 'draft'"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Classification">
+                            <field name="day_type" readonly="state == 'locked'"/>
+                            <field name="is_absent"/>
+                            <field name="is_reviewed"/>
+                            <field name="review_user_id"
+                                   invisible="not is_reviewed"/>
+                            <field name="reviewed_on"
+                                   invisible="not is_reviewed"/>
+                            <field name="absence_ids" widget="many2many_tags"
+                                   invisible="not absence_ids"/>
+                            <field name="leave_hours" widget="float_time"
+                                   invisible="not leave_hours"/>
+                        </group>
+                        <group string="Metrics">
+                            <field name="worked_hours" widget="float_time"/>
+                            <field name="expected_hours" widget="float_time"/>
+                            <field name="late_hours" widget="float_time"/>
+                            <field name="early_leave_hours" widget="float_time"/>
+                            <field name="unauthorized_absence_hours"
+                                   widget="float_time"/>
+                            <field name="holiday_worked_hours"
+                                   widget="float_time"
+                                   invisible="day_type not in ('holiday', 'rest')"/>
+                            <field name="overtime_paid_hours"
+                                   widget="float_time"/>
+                            <field name="overtime_compensatory_hours"
+                                   widget="float_time"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Planned (snapshot)" name="planned">
+                            <group>
+                                <group>
+                                    <field name="schedule_line_id"/>
+                                    <field name="crosses_midnight"/>
+                                </group>
+                                <group>
+                                    <field name="planned_entry_dt"/>
+                                    <field name="planned_exit_dt"/>
+                                    <field name="planned_break_start_dt"/>
+                                    <field name="planned_break_end_dt"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Real (from punches)" name="real">
+                            <group>
+                                <field name="real_entry_dt"/>
+                                <field name="real_exit_dt"/>
+                                <field name="real_break_start_dt"/>
+                                <field name="real_break_end_dt"/>
+                            </group>
+                        </page>
+                        <page string="Additional hours" name="overtime">
+                            <field name="overtime_ids" readonly="state == 'locked'">
+                                <list editable="bottom">
+                                    <field name="type"/>
+                                    <field name="hour_from" widget="float_time"/>
+                                    <field name="hour_to" widget="float_time"/>
+                                    <field name="duration_hours" widget="float_time" sum="Total"/>
+                                    <field name="state" widget="badge"
+                                           decoration-info="state == 'draft'"
+                                           decoration-success="state == 'approved'"
+                                           decoration-danger="state == 'rejected'"/>
+                                    <field name="employee_id" column_invisible="1"/>
+                                    <field name="date" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Audit" name="audit">
+                            <group>
+                                <field name="attendance_ids"
+                                       widget="many2many_tags" readonly="1"/>
+                            </group>
+                            <separator string="Notes"/>
+                            <field name="notes" placeholder="Manual corrections, comments…"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_workday_search" model="ir.ui.view">
+        <field name="name">hr.workday.search</field>
+        <field name="model">hr.workday</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="schedule_line_id"/>
+                <filter name="state_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="state_processed" string="Processed" domain="[('state', '=', 'processed')]"/>
+                <filter name="state_locked" string="Locked" domain="[('state', '=', 'locked')]"/>
+                <separator/>
+                <filter name="type_working" string="Working" domain="[('day_type', '=', 'working')]"/>
+                <filter name="type_rest" string="Rest day" domain="[('day_type', '=', 'rest')]"/>
+                <filter name="type_leave" string="Leave" domain="[('day_type', '=', 'leave')]"/>
+                <filter name="type_holiday" string="Holiday" domain="[('day_type', '=', 'holiday')]"/>
+                <filter name="type_no_schedule" string="No schedule" domain="[('day_type', '=', 'no_schedule')]"/>
+                <separator/>
+                <filter name="absent" string="Absent" domain="[('is_absent', '=', True)]"/>
+                <filter name="has_late" string="With late" domain="[('late_hours', '&gt;', 0)]"/>
+                <filter name="has_unauthorized" string="With unauthorized absence" domain="[('unauthorized_absence_hours', '&gt;', 0)]"/>
+                <filter name="has_incongruency" string="With incongruency" domain="[('incongruency_message', '!=', False)]"/>
+                <separator/>
+                <filter name="filter_date" date="date" string="Date"/>
+                <group>
+                    <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}"/>
+                    <filter name="group_day_type" string="Day type" context="{'group_by': 'day_type'}"/>
+                    <separator/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_workday" model="ir.actions.act_window">
+        <field name="name">Workdays</field>
+        <field name="res_model">hr.workday</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No workdays yet</p>
+            <p>Workdays are produced by the engine from schedule assignments
+            and attendances. Each row is the frozen snapshot of one
+            (employee, date).</p>
+        </field>
+    </record>
+
+</odoo>

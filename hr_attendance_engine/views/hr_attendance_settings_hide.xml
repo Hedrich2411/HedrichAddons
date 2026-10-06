@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Everything hidden here reads resource_calendar_id to decide how many
+        hours were expected, which this module replaces with hr.schedule.
+        Left visible they would silently compute against the default 8h
+        Mon-Fri calendar and contradict the engine.
+    -->
+
+    <record id="res_config_settings_hide_calendar_based" model="ir.ui.view">
+        <field name="name">res.config.settings.hide.calendar.based.attendance</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Closes open punches against the resource calendar's expected
+                 hours, so a night shift would be cut at the wrong time. -->
+            <xpath expr="//setting[field[@name='auto_check_out']]"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Flags uncovered days as absences using the same calendar;
+                 hr.workday already reports absences from the assignments. -->
+            <xpath expr="//setting[field[@name='absence_management']]"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Odoo's own overtime engine, superseded by
+                 hr.workday.overtime. -->
+            <xpath expr="//block[@name='overtime_settings']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Both crons filter on resource_calendar_id.flexible_hours and size
+         the day from the calendar's attendance lines. -->
+    <record id="hr_attendance.hr_attendance_check_out_cron" model="ir.cron">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="hr_attendance.hr_attendance_absence_cron" model="ir.cron">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paperformat_attendance_landscape" model="report.paperformat">
+        <field name="name">Attendance Report Landscape</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">18</field>
+        <field name="margin_bottom">12</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">12</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_attendance" model="ir.actions.report">
+        <field name="name">Attendance Report</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_attendance_engine.report_attendance_document</field>
+        <field name="report_file">hr_attendance_engine.report_attendance_document</field>
+        <field name="paperformat_id" ref="paperformat_attendance_landscape"/>
+        <field name="print_report_name">'Attendance'</field>
+    </record>
+
+    <record id="action_report_lateness" model="ir.actions.report">
+        <field name="name">Lateness Report</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_attendance_engine.report_lateness_document</field>
+        <field name="report_file">hr_attendance_engine.report_lateness_document</field>
+        <field name="paperformat_id" ref="paperformat_attendance_landscape"/>
+        <field name="print_report_name">'Lateness'</field>
+    </record>
+
+    <record id="action_report_absence" model="ir.actions.report">
+        <field name="name">Absence Report</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_attendance_engine.report_absence_document</field>
+        <field name="report_file">hr_attendance_engine.report_absence_document</field>
+        <field name="paperformat_id" ref="paperformat_attendance_landscape"/>
+        <field name="print_report_name">'Absences'</field>
+    </record>
+
+    <record id="action_report_vacation" model="ir.actions.report">
+        <field name="name">Vacation Report</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_attendance_engine.report_vacation_document</field>
+        <field name="report_file">hr_attendance_engine.report_vacation_document</field>
+        <field name="print_report_name">'Vacation'</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,2786 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_attendance_engine
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-06 11:13+0000\n"
+"PO-Revision-Date: 2026-10-06 11:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_PE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "%(emp)s has %(bal).1f compensatory hours but the request is for %(req).1f."
+msgstr "%(emp)s tiene %(bal).1f horas compensatorias, pero la solicitud es por %(req).1f."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "%(emp)s has %(rem).1f vacation days left but the request is for %(req).1f."
+msgstr "%(emp)s tiene %(rem).1f días de vacaciones disponibles, pero la solicitud es por %(req).1f."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+msgid "%(label)s must be between 00:00 and 23:59."
+msgstr "%(label)s debe estar entre 00:00 y 23:59."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday_overtime.py:0
+msgid "%s is a locked workday. Unlock it before changing its additional hours."
+msgstr "%s es una jornada bloqueada. Desbloquéela antes de cambiar sus horas adicionales."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "%s is a locked workday. Unlock it before changing the data behind it, then process it again."
+msgstr "%s es una jornada bloqueada. Desbloquéela antes de cambiar sus datos y luego procésela de nuevo."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "%s is still in progress. Lock it once its last punch is in."
+msgstr "%s todavía está en curso. Bloquéela cuando entre su última marcación."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "%s requires a supporting document."
+msgstr "%s requiere un documento sustentatorio."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,print_report_name:hr_attendance_engine.action_report_absence
+msgid "'Absences'"
+msgstr "'Ausencias'"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,print_report_name:hr_attendance_engine.action_report_attendance
+msgid "'Attendance'"
+msgstr "'Asistencia'"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+#: code:addons/hr_attendance_engine/wizards/hr_attendance_report_wizard.py:0
+#: code:addons/hr_attendance_engine/wizards/hr_schedule_assignment_wizard.py:0
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "'Date from' must be on or before 'Date to'."
+msgstr "'Fecha desde' debe ser anterior o igual a 'Fecha hasta'."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+#: code:addons/hr_attendance_engine/models/hr_workday_overtime.py:0
+msgid "'Hour to' must be after 'Hour from'."
+msgstr "'Hora hasta' debe ser posterior a 'Hora desde'."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,print_report_name:hr_attendance_engine.action_report_lateness
+msgid "'Lateness'"
+msgstr "'Tardanzas'"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,print_report_name:hr_attendance_engine.action_report_vacation
+msgid "'Vacation'"
+msgstr "'Vacaciones'"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "<span class=\"o_stat_text\">Compensatory</span>"
+msgstr "<span class=\"o_stat_text\">Compensatorio</span>"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "<span class=\"o_stat_text\">Monthly Hours</span>"
+msgstr "<span class=\"o_stat_text\">Horas del mes</span>"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "<span class=\"o_stat_text\">Vacation Days</span>"
+msgstr "<span class=\"o_stat_text\">Días de vacaciones</span>"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "<strong>Incongruency:</strong>"
+msgstr "<strong>Incongruencia:</strong>"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "A"
+msgstr "F"
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_schedule_line_schedule_dayofweek_unique
+msgid "A schedule can have only one line per day of the week."
+msgstr "Un horario solo puede tener una línea por día de la semana."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_schedule
+msgid ""
+"A schedule template carries one line per day of the week\n"
+"            (entry, exit, break, tolerances). Then assign the template to\n"
+"            employees day by day."
+msgstr ""
+"Una plantilla de horario tiene una línea por día de la semana\n"
+"            (ingreso, salida, refrigerio, tolerancias). Luego se asigna la\n"
+"            plantilla a los empleados día por día."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__is_reviewed
+msgid "A supervisor checked the punches of this day in the attendance review before the engine processed it."
+msgstr "Un supervisor revisó las marcaciones de este día en el tareo antes de que el motor lo procesara."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "ABSENCE REPORT"
+msgstr "REPORTE DE AUSENCIAS"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "ATTENDANCE REPORT"
+msgstr "REPORTE DE ASISTENCIA"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__absence_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+msgid "Absence"
+msgstr "Ausencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__absence_count
+msgid "Absence Count"
+msgstr "N.° de ausencias"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,name:hr_attendance_engine.action_report_absence
+#: model:ir.model,name:hr_attendance_engine.model_report_hr_attendance_engine_report_absence_document
+msgid "Absence Report"
+msgstr "Reporte de ausencias"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_absence
+msgid "Absence Request"
+msgstr "Solicitud de ausencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_absence_type
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_type_form
+msgid "Absence Type"
+msgstr "Tipo de ausencia"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_absence_type
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_absence_type
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_type_list
+msgid "Absence Types"
+msgstr "Tipos de ausencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_absence_type_code_unique
+msgid "Absence type code must be unique."
+msgstr "El código del tipo de ausencia debe ser único."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_absence
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__absence_ids
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__report_type__absence
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_absence
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_absences_root
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_list
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_form
+msgid "Absences"
+msgstr "Ausencias"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Absent"
+msgstr "Ausente"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_needaction
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__active
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance__active
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__active
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de actividad excepción"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono del tipo de actividad"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_public_holiday
+msgid "Add a public holiday"
+msgstr "Agregar un feriado"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Add attendance"
+msgstr "Agregar marcación"
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_workday_overtime
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "Additional Hours"
+msgstr "Horas adicionales"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_workday_overtime
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__overtime_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_list
+msgid "Additional hours"
+msgstr "Horas adicionales"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_workday_overtime
+msgid "Additional hours (overtime / compensatory)"
+msgstr "Horas adicionales (extras / compensatorias)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__half_day_period__pm
+msgid "Afternoon"
+msgstr "Tarde"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__scope__all
+msgid "All employees"
+msgstr "Todos los empleados"
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_schedule_assignment_employee_date_unique
+msgid "An employee can only have one schedule per day."
+msgstr "Un empleado solo puede tener un horario por día."
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_vacation_period_employee_cycle_unique
+msgid "An employee cannot have two vacation periods starting on the same date."
+msgstr "Un empleado no puede tener dos periodos vacacionales que inicien la misma fecha."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "Approval"
+msgstr "Aprobación"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__state__approved
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday_overtime__state__approved
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__approved_at
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__approved_at
+msgid "Approved At"
+msgstr "Aprobado el"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "Approved absences by type"
+msgstr "Ausencias aprobadas por tipo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__absence_ids
+msgid "Approved absences covering this date. Either a single full-day leave or one or more partial-day permissions (hourly or half-day) that sum into leave_hours."
+msgstr "Ausencias aprobadas que cubren esta fecha: una sola licencia de día completo o uno o más permisos parciales (por horas o de medio día) que suman las horas de permiso."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Approved by"
+msgstr "Aprobado por"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "Approved compensatory hours minus the compensatory permissions taken"
+msgstr "Horas compensatorias aprobadas menos los permisos compensatorios tomados"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_employee__compensatory_hours_balance
+msgid "Approved compensatory overtime hours minus approved compensatory absences taken. Available to spend on compensatory-type permissions."
+msgstr "Horas extras compensatorias aprobadas menos las ausencias compensatorias gozadas. Disponible para permisos de tipo compensatorio."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__approver_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__approver_id
+msgid "Approver"
+msgstr "Aprobador"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Archive"
+msgstr "Archivar"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_type_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_wizard_form
+msgid "Assign"
+msgstr "Asignar"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_schedule_assignment
+msgid "Assign schedules to employees by day"
+msgstr "Asigne horarios a los empleados por día"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_attachment_count
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_attachment_count
+msgid "Attachment Count"
+msgstr "Número de adjuntos"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+#: model:ir.model,name:hr_attendance_engine.model_hr_attendance
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__report_type__attendance
+msgid "Attendance"
+msgstr "Asistencia"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,name:hr_attendance_engine.action_report_attendance
+#: model:ir.model,name:hr_attendance_engine.model_report_hr_attendance_engine_report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_attendance_report_wizard_form
+msgid "Attendance Report"
+msgstr "Reporte de asistencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_attendance_report_wizard
+msgid "Attendance Report Wizard"
+msgstr "Asistente de reportes de asistencia"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_attendance_report_wizard
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_attendance_report
+msgid "Attendance Reports"
+msgstr "Reportes de asistencia"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_attendance_review
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__ir_ui_view__type__attendance_review
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_attendance_review
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_attendance_review
+msgid "Attendance Review"
+msgstr "Tareo"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "Attendance archived."
+msgstr "Marcación archivada."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Attendances found during a full-day absence."
+msgstr "Hay marcaciones durante una ausencia de día completo."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Attendances found on a day without schedule."
+msgstr "Hay marcaciones en un día sin horario."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__attendance_ids
+msgid "Attendances the engine considered to compute this workday."
+msgstr "Marcaciones que el motor consideró para calcular esta jornada."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Audit"
+msgstr "Auditoría"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_attendance_review
+msgid ""
+"Bad or missing attendances show up here day by day. Fix them,\n"
+"            then run <i>Generate Workdays</i>."
+msgstr ""
+"Aquí aparecen, día por día, las marcaciones erradas o faltantes. Corríjalas\n"
+"            y luego ejecute <i>Generar jornadas</i>."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_form
+msgid "Balance (days)"
+msgstr "Saldo (días)"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_mourning
+msgid "Bereavement leave"
+msgstr "Licencia por luto"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__break_end
+msgid "Break end"
+msgstr "Fin del refrigerio"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+msgid "Break end must be after break start."
+msgstr "El fin del refrigerio debe ser posterior a su inicio."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__break_start
+msgid "Break start"
+msgstr "Inicio del refrigerio"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Break<br/>Hrs."
+msgstr "Hrs.<br/>Refr."
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_schedule_assignment_wizard
+msgid "Bulk Assign"
+msgstr "Asignación masiva"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_schedule_assignment_wizard
+msgid "Bulk Assign Schedules"
+msgstr "Asignar horarios masivamente"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_schedule_assignment_wizard
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_wizard_form
+msgid "Bulk Schedule Assignment"
+msgstr "Asignación masiva de horarios"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__scope__department
+msgid "By department"
+msgstr "Por departamento"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__scope__employee
+msgid "By employee"
+msgstr "Por empleado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__date
+msgid "Calendar date the workday belongs to. For shifts that cross midnight, this is the entry date."
+msgstr "Fecha calendario a la que pertenece la jornada. En turnos que cruzan la medianoche, es la fecha de ingreso."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__duration_days
+msgid "Calendar days, for payroll and vacation period deduction."
+msgstr "Días calendario, para la planilla y el descuento del periodo vacacional."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_attendance_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_wizard_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_generate_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "Cancel the approval before resetting to draft."
+msgstr "Cancele la aprobación antes de regresar a borrador."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__state__cancelled
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Cannot edit locked workdays. Forbidden fields: %s"
+msgstr "No se pueden editar jornadas bloqueadas. Campos no permitidos: %s"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_list
+msgid "Cash"
+msgstr "Vendidos"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__category
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__category
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Category"
+msgstr "Categoría"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Check-in"
+msgstr "Ingreso"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__window_start_dt
+msgid "Check-ins from here up to the window end belong to this workday. Neighbouring workdays never share a moment."
+msgstr "Las entradas desde aquí hasta el fin de la ventana pertenecen a esta jornada. Dos jornadas vecinas nunca comparten un instante."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Check-out"
+msgstr "Salida"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Classification"
+msgstr "Clasificación"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_vacation_period__state__closed
+msgid "Closed"
+msgstr "Cerrada"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__is_closed
+msgid "Closed by hand: its days can no longer be taken."
+msgstr "Cerrado a mano: sus días ya no se pueden tomar."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__code
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Code"
+msgstr "Código"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__color
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__color
+msgid "Color"
+msgstr "Color"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Comp.<br/>Overtime"
+msgstr "H. Ext.<br/>Comp."
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__company_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__company_id
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_search
+msgid "Company"
+msgstr "Compañía"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+msgid "Compensatory"
+msgstr "Compensatorio"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday_overtime__type__compensatory
+msgid "Compensatory (adds to balance)"
+msgstr "Compensatorio (suma al saldo)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__compensatory_hours_balance
+msgid "Compensatory balance"
+msgstr "Saldo compensatorio"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__overtime_compensatory_hours
+msgid "Compensatory overtime"
+msgstr "Horas extras compensatorias"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_permission_compensatory
+msgid "Compensatory permission"
+msgstr "Permiso compensatorio"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_attendance_engine_config
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__state__confirmed
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__consumes_vacation
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__consumes_vacation_period
+msgid "Consumes Vacation Period"
+msgstr "Consume periodo vacacional"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__consumes_compensatory
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__consumes_compensatory_balance
+msgid "Consumes compensatory balance"
+msgstr "Consume saldo compensatorio"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_schedule
+msgid "Create your first schedule template"
+msgstr "Cree su primera plantilla de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__create_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "Created: %(created)s · Processed: %(processed)s · Skipped (locked): %(skipped)s"
+msgstr "Creadas: %(created)s · Procesadas: %(processed)s · Omitidas (bloqueadas): %(skipped)s"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_schedule_assignment_wizard.py:0
+msgid "Created: %(created)s · Replaced: %(replaced)s · Skipped: %(skipped)s"
+msgstr "Creadas: %(created)s · Reemplazadas: %(replaced)s · Omitidas: %(skipped)s"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__crosses_midnight
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__crosses_midnight
+msgid "Crosses Midnight"
+msgstr "Cruza medianoche"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__cycle_end
+msgid "Cycle End"
+msgstr "Fin del ciclo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__cycle_start
+msgid "Cycle Start"
+msgstr "Inicio del ciclo"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Cycle end"
+msgstr "Fin del ciclo"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_vacation_period.py:0
+msgid "Cycle end must be after cycle start."
+msgstr "El fin del ciclo debe ser posterior a su inicio."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Cycle start"
+msgstr "Inicio del ciclo"
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_schedule_assignment
+msgid "Daily Assignments"
+msgstr "Asignaciones diarias"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_schedule_assignment
+msgid "Daily Schedule Assignment"
+msgstr "Asignación diaria de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__date
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_search
+msgid "Date"
+msgstr "Fecha"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__date_from
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__date_from
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__date_from
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__date_from
+msgid "Date From"
+msgstr "Fecha desde"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__date_to
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__date_to
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__date_to
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__date_to
+msgid "Date To"
+msgstr "Fecha hasta"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__expiry_date
+msgid "Date by which the days should be taken, one year after the cycle by default. Days left after it are not lost: they can still be taken, are taken first, and the period shows as Expired so payroll can pay the indemnity Peruvian law owes."
+msgstr "Fecha hasta la que deberían tomarse los días, un año después del ciclo por defecto. Los días que queden no se pierden: se pueden seguir tomando, se toman primero y el periodo figura como Vencido para que la planilla pague la indemnización que exige la ley peruana."
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__unit__day
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__default_unit__day
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Day"
+msgstr "Día"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__day_type
+msgid "Day Type"
+msgstr "Tipo de día"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__day_of_week
+msgid "Day of week"
+msgstr "Día de la semana"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__date
+msgid "Day this additional time belongs to."
+msgstr "Día al que corresponde este tiempo adicional."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Day type"
+msgstr "Tipo de día"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Days"
+msgstr "Días"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__days_earned
+msgid "Days Earned"
+msgstr "Días ganados"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__days_paid_cash
+msgid "Days Paid Cash"
+msgstr "Días vendidos"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__days_remaining
+msgid "Days Remaining"
+msgstr "Días restantes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__days_taken
+msgid "Days Taken"
+msgstr "Días gozados"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__days_earned
+msgid "Days available for this cycle. Peruvian law: 30 days."
+msgstr "Días disponibles para este ciclo. Legislación peruana: 30 días."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_vacation_period.py:0
+msgid "Days earned must be positive."
+msgstr "Los días ganados deben ser positivos."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_vacation_period.py:0
+msgid "Days paid in cash cannot be negative."
+msgstr "Los días vendidos no pueden ser negativos."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_vacation_period.py:0
+msgid "Days paid in cash cannot exceed 50%% of days earned (Peruvian labor law)."
+msgstr "Los días vendidos no pueden superar el 50%% de los días ganados (legislación laboral peruana)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__days_paid_cash
+msgid "Days sold in cash instead of taken as leave. Peruvian law caps this at 50% of earned."
+msgstr "Días vendidos en efectivo en lugar de gozarlos. La legislación peruana lo limita al 50% de los ganados."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__default_unit
+msgid "Default Unit"
+msgstr "Unidad por defecto"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__department_ids
+msgid "Department"
+msgstr "Departamento"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_ir_ui_view__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_absence_document__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_attendance_document__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_lateness_document__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_vacation_document__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_company__display_name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__attachment_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__state__draft
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__state__draft
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday_overtime__state__draft
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+msgid "Duration"
+msgstr "Duración"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__duration_days
+msgid "Duration Days"
+msgstr "Duración (días)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__duration_hours
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__duration_hours
+msgid "Duration Hours"
+msgstr "Duración (horas)"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_schedule_assignment
+msgid ""
+"Each row binds one employee to one schedule template for a specific date.\n"
+"            Use <i>Bulk Assign</i> in the menu to fill a range at once."
+msgstr ""
+"Cada fila vincula un empleado con una plantilla de horario para una fecha específica.\n"
+"            Use <i>Asignación masiva</i> en el menú para llenar un rango de una vez."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__early_leave_hours
+msgid "Early leave hours"
+msgstr "Horas de salida anticipada"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Early<br/>Leave"
+msgstr "Salida<br/>anticip."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_list
+msgid "Earned"
+msgstr "Ganados"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Edit"
+msgstr "Editar"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+#: model:ir.model,name:hr_attendance_engine.model_hr_employee
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__employee_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__employee_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__employee_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__employee_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__employee_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__employee_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__employee_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__employee_id
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__planned_entry
+msgid "Entry"
+msgstr "Ingreso"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+msgid "Entry and Exit cannot be equal."
+msgstr "El ingreso y la salida no pueden ser iguales."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__entry_tolerance_minutes
+msgid "Entry tolerance (min)"
+msgstr "Tolerancia de ingreso (min)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_vacation_period__state__exhausted
+msgid "Exhausted"
+msgstr "Agotado"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_schedule.py:0
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__planned_exit
+msgid "Exit"
+msgstr "Salida"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__exit_tolerance_minutes
+msgid "Exit tolerance (min)"
+msgstr "Tolerancia de salida (min)"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Expected %(expected)s attendance record(s) (%(punches)s punches) for this day, got %(got)s."
+msgstr "Se esperaban %(expected)s registro(s) de asistencia (%(punches)s marcaciones) para este día, se encontraron %(got)s."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__expected_hours
+msgid "Expected hours"
+msgstr "Horas esperadas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_vacation_period__state__expired
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_search
+msgid "Expired"
+msgstr "Vencido"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Expiry"
+msgstr "Vencimiento"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__expiry_date
+msgid "Expiry Date"
+msgstr "Fecha de vencimiento"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "F"
+msgstr "F"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "FROM:"
+msgstr "DEL:"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_follower_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_partner_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (contactos)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de Font Awesome, por ejemplo fa-tasks"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__half_day_period
+msgid "For half-day absences: the half of the shift before the break (morning) or after it (afternoon)."
+msgstr "Para ausencias de medio día: la mitad del turno antes del refrigerio (mañana) o después de él (tarde)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__hour_to
+msgid "For hourly absences, end time on each day of the range (local hour)."
+msgstr "Para ausencias por horas, hora de fin en cada día del rango (hora local)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__hour_from
+msgid "For hourly absences, start time on each day of the range (local hour). A range of days repeats the same hours daily, e.g. the lactation hour."
+msgstr "Para ausencias por horas, hora de inicio en cada día del rango (hora local). Un rango de días repite las mismas horas a diario, p. ej. la hora de lactancia."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__4
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "From"
+msgstr "Desde"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Full day"
+msgstr "Día completo"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "GRAND TOTAL"
+msgstr "TOTAL FINAL"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_generate_wizard_form
+msgid "Generate"
+msgstr "Generar"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_workday_generate_wizard
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_workday_generate
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_generate_wizard_form
+msgid "Generate Workdays"
+msgstr "Generar jornadas"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_workday_generate_wizard
+msgid "Generate Workdays for a Range"
+msgstr "Generar jornadas para un rango"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_workday_analysis
+msgid ""
+"Generate workdays for a period and the engine's figures will\n"
+"            show up here."
+msgstr ""
+"Genere las jornadas de un periodo y las cifras del motor\n"
+"            aparecerán aquí."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "Generated Workdays"
+msgstr "Jornadas generadas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.res_config_settings_view_form_inherit
+msgid "HR Attendance Engine"
+msgstr "Motor de asistencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__half_day_period
+msgid "Half"
+msgstr "Mitad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__unit__half_day
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__default_unit__half_day
+msgid "Half day"
+msgstr "Medio día"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__has_message
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__has_message
+msgid "Has Message"
+msgstr "Tiene mensajes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__has_break
+msgid "Has break"
+msgstr "Tiene refrigerio"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__day_type__holiday
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Holiday"
+msgstr "Feriado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Holiday<br/>Worked"
+msgstr "Trabajado en<br/>feriado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__unit__hour
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__default_unit__hour
+msgid "Hour"
+msgstr "Hora"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__hour_from
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__hour_from
+msgid "Hour From"
+msgstr "Hora desde"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__hour_to
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__hour_to
+msgid "Hour To"
+msgstr "Hora hasta"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_schedule_line__planned_entry
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_schedule_line__planned_exit
+msgid "Hour of the day (24h)."
+msgstr "Hora del día (formato 24h)."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Hourly"
+msgstr "Por horas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "Hours"
+msgstr "Horas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__holiday_worked_hours
+msgid "Hours actually worked on a public holiday or on a weekly rest day. Peruvian law pays these with a 100% surcharge unless a substitute rest day is granted, so payroll needs them apart from the regular worked hours."
+msgstr "Horas trabajadas en un feriado o en el día de descanso semanal. La ley peruana las paga con una sobretasa del 100 % salvo que se otorgue un descanso sustitutorio, por eso la planilla las necesita aparte de las horas trabajadas normales."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hours actually worked, overtime excluded."
+msgstr "Horas realmente laboradas, sin considerar las extras."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hours expected from the assigned schedule."
+msgstr "Horas esperadas según el horario asignado."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hours from punches (not clipped to the schedule)."
+msgstr "Horas por marcación (sin recortar al horario)."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+#: code:addons/hr_attendance_engine/models/hr_workday_overtime.py:0
+msgid "Hours must be between 00:00 and 24:00."
+msgstr "Las horas deben estar entre 00:00 y 24:00."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__leave_hours
+msgid "Hours of partial-day absence(s) subtracted from the expected working time. 0 when the day is a full leave or no absence applies."
+msgstr "Horas de ausencia parcial descontadas del tiempo de trabajo esperado. Es 0 cuando el día es una licencia completa o no aplica ninguna ausencia."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__unauthorized_absence_hours
+msgid "Hours the worker was missing during the planned window with no approved absence covering them (excess break, late return from a permit, etc.). Already nets out tolerance forgiveness. Use as the discount input for payroll."
+msgstr "Horas en que el trabajador estuvo ausente dentro del horario planificado sin una ausencia aprobada que las cubra (refrigerio excedido, retorno tardío de un permiso, etc.). Ya descuenta la tolerancia. Úselo como base de descuento para la planilla."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_res_company__workday_tolerance_loss_mode
+#: model:ir.model.fields,help:hr_attendance_engine.field_res_config_settings__workday_tolerance_loss_mode
+msgid ""
+"How late_hours and early_leave_hours are computed when the worker exceeds the schedule's tolerance window.\n"
+"\n"
+"* Lenient: only the excess (delay - tolerance) becomes late_hours. The tolerance is always forgiven.\n"
+"* Strict: if the worker exceeds the tolerance, the grace is forfeited and the full delay from the planned entry counts as late_hours."
+msgstr ""
+"Cómo se calculan las horas de tardanza y de salida anticipada cuando el trabajador excede la tolerancia del horario.\n"
+"\n"
+"* Flexible: solo el exceso (retraso - tolerancia) cuenta como tardanza. La tolerancia siempre se perdona.\n"
+"* Estricto: si el trabajador excede la tolerancia, pierde la gracia y todo el retraso desde el ingreso planificado cuenta como tardanza."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .E"
+msgstr "Hrs .H"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .E:"
+msgstr "Hrs .H:"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .P"
+msgstr "Hrs .M"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .P:"
+msgstr "Hrs .M:"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .W"
+msgstr "Hrs .L"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Hrs .W:"
+msgstr "Hrs .L:"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Hrs. to<br/>Deduct"
+msgstr "Hrs. a<br/>Desc."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_ir_ui_view__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_absence_document__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_attendance_document__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_lateness_document__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_report_hr_attendance_engine_report_vacation_document__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_company__id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad excepción."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__message_needaction
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_generate_wizard__only_assigned
+msgid "If checked, restrict to employees that actually have a schedule assignment in the date range. Days with no assignment for an unselected employee are skipped."
+msgstr "Si está marcado, se limita a los empleados que tienen una asignación de horario en el rango de fechas. Los días sin asignación para un empleado no seleccionado se omiten."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__message_has_error
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__message_has_sms_error
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__message_has_error
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen error de entrega."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__requires_document
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence_type__requires_document
+msgid "If set, an approved request requires at least one attached document (CITT, marriage certificate, etc.)."
+msgstr "Si está marcado, la solicitud aprobada requiere al menos un documento adjunto (CITT, partida de matrimonio, etc.)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__consumes_compensatory
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence_type__consumes_compensatory_balance
+msgid "If set, approved absences of this type are deducted from the employee's compensatory hours balance instead of vacation period or paid leave."
+msgstr "Si está marcado, las ausencias aprobadas de este tipo se descuentan del saldo de horas compensatorias del empleado en lugar del periodo vacacional o la licencia con goce."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__consumes_vacation
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence_type__consumes_vacation_period
+msgid "If set, approved absences of this type are deducted from the employee's open vacation period."
+msgstr "Si está marcado, las ausencias aprobadas de este tipo se descuentan del periodo vacacional abierto del empleado."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_schedule_line__is_rest_day
+msgid "If set, the worker is not expected to work on this day. Entry/exit and break fields are ignored."
+msgstr "Si está marcado, no se espera que el trabajador labore este día. Los campos de ingreso/salida y refrigerio se ignoran."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_schedule_assignment_wizard__overwrite_existing
+msgid "If unchecked, existing assignments for the same (employee, date) are kept and skipped silently. If checked, they are replaced."
+msgstr "Si está desmarcado, las asignaciones existentes para el mismo (empleado, fecha) se conservan y se omiten en silencio. Si está marcado, se reemplazan."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__incongruency_message
+msgid "Incongruency"
+msgstr "Incongruencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__is_absent
+msgid "Is Absent"
+msgstr "Es falta"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__is_closed
+msgid "Is Closed"
+msgstr "Cerrado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_is_follower
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__is_paid
+msgid "Is Paid"
+msgstr "Es remunerado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__is_rest_day
+msgid "Is Rest Day"
+msgstr "Es día de descanso"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "LATENESS REPORT"
+msgstr "REPORTE DE TARDANZAS"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_lactation
+msgid "Lactation permission"
+msgstr "Permiso por lactancia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__write_date
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Last attendance has no check-out (open punch)."
+msgstr "La última marcación no tiene salida (marcación abierta)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__late_hours
+msgid "Late hours"
+msgstr "Horas de tardanza"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Late<br/>Break"
+msgstr "Tard.<br/>Refr."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Late<br/>In"
+msgstr "Tard.<br/>Ingr."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "Late<br/>Total"
+msgstr "Tard.<br/>Total"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__report_type__lateness
+msgid "Lateness"
+msgstr "Tardanzas"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,name:hr_attendance_engine.action_report_lateness
+#: model:ir.model,name:hr_attendance_engine.model_report_hr_attendance_engine_report_lateness_document
+msgid "Lateness Report"
+msgstr "Reporte de tardanzas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__day_type__leave
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Leave"
+msgstr "Licencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_public_holiday__company_id
+msgid "Leave empty to apply the holiday to every company."
+msgstr "Déjelo vacío para aplicar el feriado a todas las compañías."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__leave_hours
+msgid "Leave hours"
+msgstr "Horas de permiso"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Leave<br/>Hrs."
+msgstr "Hrs.<br/>Perm."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__res_company__workday_tolerance_loss_mode__lenient
+msgid "Lenient — only the excess counts as late"
+msgstr "Flexible · solo el exceso cuenta como tardanza"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__line_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_form
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__hour_from
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__hour_to
+msgid "Local hour (24h format)."
+msgstr "Hora local (formato 24h)."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Lock"
+msgstr "Bloquear"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__state__locked
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Locked"
+msgstr "Bloqueado"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Locked workdays cannot be deleted. Unlock them first."
+msgstr "Las jornadas bloqueadas no se pueden eliminar. Desbloquéelas primero."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Manual corrections, comments…"
+msgstr "Correcciones manuales, comentarios…"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Mark all as reviewed"
+msgstr "Marcar todo como revisado"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Mark day as reviewed"
+msgstr "Marcar el día como revisado"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "Marked as reviewed."
+msgstr "Marcado como revisado."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__marriage
+msgid "Marriage"
+msgstr "Matrimonio"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_marriage
+msgid "Marriage leave"
+msgstr "Licencia por matrimonio"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__maternity
+msgid "Maternity"
+msgstr "Maternidad"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_maternity
+msgid "Maternity leave"
+msgstr "Licencia por maternidad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_has_error
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega del mensaje"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Metrics"
+msgstr "Métricas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__0
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "Month"
+msgstr "Mes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__half_day_period__am
+msgid "Morning"
+msgstr "Mañana"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__mourning
+msgid "Mourning"
+msgstr "Luto"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de mi actividad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_public_holiday__name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule__name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__name
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "New Attendance"
+msgstr "Nueva marcación"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Next"
+msgstr "Siguiente"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite de la siguiente actividad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_type_id
+msgid "Next Activity Type"
+msgstr "Tipo de la siguiente actividad"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "No"
+msgstr "No"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "No absence in this range."
+msgstr "No hay ausencias en este rango."
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "No attendance."
+msgstr "Sin marcaciones."
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "No employee matches the current filter."
+msgstr "Ningún empleado coincide con el filtro actual."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_attendance_report_wizard.py:0
+msgid "No employee matches the selected scope."
+msgstr "Ningún empleado corresponde al alcance seleccionado."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+msgid "No lateness recorded in this period."
+msgstr "No se registraron tardanzas en este periodo."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__day_type__no_schedule
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "No schedule"
+msgstr "Sin horario"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "No vacation period defined."
+msgstr "No hay periodo vacacional definido."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "No vacation taken in this range."
+msgstr "No se gozaron vacaciones en este rango."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_workday_analysis
+msgid "No workday to analyse"
+msgstr "No hay jornadas para analizar"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_workday
+msgid "No workdays yet"
+msgstr "Aún no hay jornadas"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "None of the selected employees have a schedule assignment in this range. Uncheck 'Only assigned' to process them anyway (they'll be classified as 'No schedule')."
+msgstr "Ninguno de los empleados seleccionados tiene una asignación de horario en este rango. Desmarque 'Solo asignados' para procesarlos de todas formas (se clasificarán como 'Sin horario')."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__notes
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_needaction_counter
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_has_error_counter
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__message_needaction_counter
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__message_has_error_counter
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Ongoing"
+msgstr "En curso"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_generate_wizard__only_assigned
+msgid "Only Assigned"
+msgstr "Solo asignados"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Only attendance administrators can unlock workdays."
+msgstr "Solo los administradores de asistencia pueden desbloquear jornadas."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "Only confirmed absences can be approved."
+msgstr "Solo se pueden aprobar las ausencias confirmadas."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "Only confirmed or approved absences can be rejected."
+msgstr "Solo se pueden rechazar las ausencias confirmadas o aprobadas."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday_overtime.py:0
+msgid "Only draft records can be approved."
+msgstr "Solo se pueden aprobar los registros en borrador."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_vacation_period__state__open
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_search
+msgid "Open"
+msgstr "Abierto"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__state
+msgid "Open: days can still be taken. Exhausted: none left. Expired: days still owed past the expiry date. Closed: closed by hand."
+msgstr "Abierto: aún se pueden tomar días. Agotado: no quedan días. Vencido: días que se siguen debiendo pasada la fecha de vencimiento. Cerrado: cerrado a mano."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+msgid "Optional context for the manager…"
+msgstr "Contexto opcional para el supervisor…"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__other
+msgid "Other"
+msgstr "Otro"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__overtime_count
+msgid "Overtime Count"
+msgstr "N.° de horas adicionales"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__overwrite_existing
+msgid "Overwrite Existing"
+msgstr "Sobrescribir existentes"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "PRINTED:"
+msgstr "IMPRESO:"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+msgid "Paid"
+msgstr "Remunerado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Paid in cash"
+msgstr "Vendidos en efectivo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__overtime_paid_hours
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday_overtime__type__paid
+msgid "Paid overtime"
+msgstr "Horas extras pagadas"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_permission_paid
+msgid "Paid permission"
+msgstr "Permiso con goce"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+msgid "Paid<br/>Overtime"
+msgstr "H. Ext.<br/>Pag."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__paternity
+msgid "Paternity"
+msgstr "Paternidad"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_paternity
+msgid "Paternity leave"
+msgstr "Licencia por paternidad"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Period"
+msgstr "Periodo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__permission
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Permission"
+msgstr "Permiso"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Planned (snapshot)"
+msgstr "Planificado (fotografía)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__planned_break_end_dt
+msgid "Planned break end"
+msgstr "Fin de refrigerio planificado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__planned_break_start_dt
+msgid "Planned break start"
+msgstr "Inicio de refrigerio planificado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__planned_entry_dt
+msgid "Planned entry"
+msgstr "Ingreso planificado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__planned_exit_dt
+msgid "Planned exit"
+msgstr "Salida planificada"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Previous"
+msgstr "Anterior"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_attendance_report_wizard_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Process"
+msgstr "Procesar"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Process %s before locking."
+msgstr "Procese %s antes de bloquear."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__state__processed
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Processed"
+msgstr "Procesado"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_public_holiday
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_form
+msgid "Public Holiday"
+msgstr "Feriado"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_public_holiday
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_public_holiday
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_list
+msgid "Public Holidays"
+msgstr "Feriados"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Real (from punches)"
+msgstr "Real (por marcaciones)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__real_break_end_dt
+msgid "Real break end"
+msgstr "Fin de refrigerio real"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__real_break_start_dt
+msgid "Real break start"
+msgstr "Inicio de refrigerio real"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__real_entry_dt
+msgid "Real entry"
+msgstr "Ingreso real"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__real_exit_dt
+msgid "Real exit"
+msgstr "Salida real"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__reason
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__reason
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "Reject"
+msgstr "Rechazar"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence__state__rejected
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday_overtime__state__rejected
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_list
+msgid "Remaining"
+msgstr "Restantes"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_form
+msgid "Reopen"
+msgstr "Reabrir"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__report_type
+msgid "Report Type"
+msgstr "Tipo de reporte"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "Requests"
+msgstr "Solicitudes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__requires_document
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__requires_document
+msgid "Requires Document"
+msgstr "Requiere documento"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "Reset to Draft"
+msgstr "Regresar a borrador"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__day_type__rest
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Rest day"
+msgstr "Día de descanso"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_attendance_review
+msgid ""
+"Review the punches before\n"
+"            generating workdays"
+msgstr ""
+"Revise las marcaciones antes\n"
+"            de generar las jornadas"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__is_reviewed
+msgid "Reviewed"
+msgstr "Revisado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__reviewed_on
+msgid "Reviewed On"
+msgstr "Revisado el"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__review_user_id
+msgid "Reviewed by"
+msgstr "Revisado por"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__message_has_sms_error
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega del SMS"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__5
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment__schedule_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_assignment_wizard__schedule_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_schedule_line__schedule_id
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_form
+msgid "Schedule"
+msgstr "Horario"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_form
+msgid "Schedule Assignment"
+msgstr "Asignación de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_schedule_assignment
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_assignment_list
+msgid "Schedule Assignments"
+msgstr "Asignaciones de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__schedule_count
+msgid "Schedule Count"
+msgstr "N.° de horarios"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__schedule_line_id
+msgid "Schedule Line"
+msgstr "Línea de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_schedule
+msgid "Schedule Templates"
+msgstr "Plantillas de horario"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_schedule_assignment_wizard.py:0
+msgid "Schedule assignment"
+msgstr "Asignación de horario"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "Schedule templates assigned, with their days"
+msgstr "Plantillas de horario asignadas, con sus días"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__is_absent
+msgid "Scheduled to work but no attendance was found."
+msgstr "Estaba programado para trabajar, pero no se encontró ninguna marcación."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_schedule
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_list
+msgid "Schedules"
+msgstr "Horarios"
+
+#. module: hr_attendance_engine
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_attendance_engine_root
+msgid "Scheduling"
+msgstr "Programación"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_attendance_report_wizard__scope
+msgid "Scope"
+msgstr "Alcance"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_attendance_report_wizard.py:0
+msgid "Select at least one department."
+msgstr "Seleccione al menos un departamento."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_attendance_report_wizard.py:0
+#: code:addons/hr_attendance_engine/wizards/hr_schedule_assignment_wizard.py:0
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "Select at least one employee."
+msgstr "Seleccione al menos un empleado."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence_type__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__day_type
+msgid "Set by the engine when processing the day."
+msgstr "Establecido por el motor al procesar el día."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__incongruency_message
+msgid "Set by the engine when the punches received don't match the expected structure (e.g., 4 punches expected with break, got 3). Investigate and clean the source data, then reprocess."
+msgstr "Establecido por el motor cuando las marcaciones recibidas no coinciden con la estructura esperada (por ejemplo, se esperaban 4 marcaciones con refrigerio y llegaron 3). Revise y corrija los datos de origen, y vuelva a procesar."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_attendance_engine_config
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence_type__code
+msgid "Short code used by payroll integrations (e.g. VAC, MED, MAT)."
+msgstr "Código corto usado por las integraciones de planilla (por ejemplo VAC, MED, MAT)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__sick
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Sick"
+msgstr "Descanso médico"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_sick
+msgid "Sick leave (medical certificate)"
+msgstr "Descanso médico (CITT)"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "Split between vacation periods: %s."
+msgstr "Repartida entre periodos vacacionales: %s."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Start date"
+msgstr "Fecha de inicio"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_vacation_period__cycle_start
+msgid "Start of the employee's vacation cycle (typically the anniversary of their contract start)."
+msgstr "Inicio del ciclo vacacional del empleado (normalmente el aniversario del inicio de su contrato)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__state
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_vacation_period__state
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__state
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__state
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "State"
+msgstr "Estado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Status"
+msgstr "Estado"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado según las actividades\n"
+"Vencida: la fecha límite ya pasó\n"
+"Hoy: la actividad es para hoy\n"
+"Planificada: actividades futuras."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__res_company__workday_tolerance_loss_mode__strict
+msgid "Strict — exceeding tolerance forfeits the grace; full delay counts"
+msgstr "Estricto · exceder la tolerancia pierde la gracia; cuenta todo el retraso"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_attendance_report_wizard__department_ids
+msgid "Sub-departments are included automatically."
+msgstr "Los subdepartamentos se incluyen automáticamente."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_attendance_report_wizard_form
+msgid "Sub-departments included automatically"
+msgstr "Los subdepartamentos se incluyen automáticamente"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__overtime_compensatory_hours
+msgid "Sum of approved compensatory overtime entries for this workday. Adds to the employee's compensatory balance."
+msgstr "Suma de las horas extras compensatorias aprobadas de esta jornada. Se agrega al saldo compensatorio del empleado."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__overtime_paid_hours
+msgid "Sum of approved paid overtime entries for this workday."
+msgstr "Suma de las horas extras pagadas aprobadas de esta jornada."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__6
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "TO:"
+msgstr "AL:"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_attendance_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_lateness_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "TOTAL APPROVED"
+msgstr "TOTAL APROBADO"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_list
+msgid "Taken"
+msgstr "Gozados"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_public_holiday
+msgid ""
+"The attendance engine classifies these dates as\n"
+"            <i>Holiday</i>. Hours punched on a holiday are reported apart,\n"
+"            since payroll surcharges them. Leave the company empty to apply\n"
+"            the holiday to every company."
+msgstr ""
+"El motor de asistencia clasifica estas fechas como\n"
+"            <i>Feriado</i>. Las horas marcadas en un feriado se reportan aparte,\n"
+"            porque la planilla les aplica sobretasa. Deje la compañía vacía para\n"
+"            aplicar el feriado a todas las compañías."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday__schedule_line_id
+msgid "The schedule line that applied on this date."
+msgstr "La línea de horario que aplicó en esta fecha."
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_schedule_assignment_wizard.py:0
+msgid "The selected range yields no eligible dates."
+msgstr "El rango seleccionado no genera fechas válidas."
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_workday_employee_date_unique
+msgid "There can only be one workday per (employee, date)."
+msgstr "Solo puede existir una jornada por (empleado, fecha)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.constraint,message:hr_attendance_engine.constraint_hr_public_holiday_date_company_unique
+msgid "There is already a public holiday on that date for this company."
+msgstr "Ya existe un feriado en esa fecha para esta compañía."
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "This workday is locked. Unlock it to edit its attendances."
+msgstr "Esta jornada está bloqueada. Desbloquéela para editar sus marcaciones."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__3
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "To"
+msgstr "Hasta"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "Today"
+msgstr "Hoy"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_company__workday_tolerance_loss_mode
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_res_config_settings__workday_tolerance_loss_mode
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.res_config_settings_view_form_inherit
+msgid "Tolerance loss mode"
+msgstr "Modo de pérdida de tolerancia"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_list
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_list
+msgid "Total"
+msgstr "Total"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_list
+msgid "Total days"
+msgstr "Total de días"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_schedule_line__crosses_midnight
+msgid "True when exit falls before entry: shift ends the next day."
+msgstr "Verdadero cuando la salida es anterior al ingreso: el turno termina al día siguiente."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__1
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__type_id
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__type
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_search
+msgid "Type"
+msgstr "Tipo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de la actividad excepción registrada."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__unauthorized_absence_hours
+msgid "Unauthorized absence"
+msgstr "Ausencia injustificada"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__unit
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Unlock"
+msgstr "Desbloquear"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Unlock %s before resetting."
+msgstr "Desbloquee %s antes de regresar a borrador."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Unpaid"
+msgstr "Sin goce"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__unpaid
+msgid "Unpaid leave"
+msgstr "Licencia sin goce"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_permission_unpaid
+msgid "Unpaid permission"
+msgstr "Permiso sin goce"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_attendance__active
+msgid "Unset to take this punch out of the calculation while keeping it on record. Used by the attendance review to discard bad punches without destroying the evidence."
+msgstr "Desmárquelo para sacar esta marcación del cálculo sin borrarla. El tareo lo usa para descartar marcaciones erradas sin destruir la evidencia."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Upcoming"
+msgstr "Próximas"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__attendance_ids
+msgid "Used attendances"
+msgstr "Marcaciones utilizadas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "VACATION REPORT"
+msgstr "REPORTE DE VACACIONES"
+
+#. module: hr_attendance_engine
+#: model:hr.absence.type,name:hr_attendance_engine.absence_type_vacation
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_absence_type__category__vacation
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_attendance_report_wizard__report_type__vacation
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_search
+msgid "Vacation"
+msgstr "Vacaciones"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_employee__vacation_days_left
+msgid "Vacation Days Left"
+msgstr "Días de vacaciones disponibles"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_vacation_period
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__vacation_period_id
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_form
+msgid "Vacation Period"
+msgstr "Periodo vacacional"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_vacation_period
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_vacation_period
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_vacation_period_list
+msgid "Vacation Periods"
+msgstr "Periodos vacacionales"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.report,name:hr_attendance_engine.action_report_vacation
+#: model:ir.model,name:hr_attendance_engine.model_report_hr_attendance_engine_report_vacation_document
+msgid "Vacation Report"
+msgstr "Reporte de vacaciones"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Vacation absences in the selected range"
+msgstr "Vacaciones gozadas en el rango seleccionado"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "Vacation days earned and not taken yet"
+msgstr "Días de vacaciones ganados y aún no tomados"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_vacation_document
+msgid "Vacation periods"
+msgstr "Periodos vacacionales"
+
+#. module: hr_attendance_engine
+#: model:ir.actions.server,name:hr_attendance_engine.ir_cron_vacation_period_expire_ir_actions_server
+msgid "Vacation periods: mark expired"
+msgstr "Periodos vacacionales: marcar vencidos"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_ir_ui_view
+msgid "View"
+msgstr "Vista"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_ir_ui_view__type
+msgid "View Type"
+msgstr "Ver tipo"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_absence__website_message_ids
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__website_message_ids
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_schedule_line__day_of_week__2
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.js:0
+msgid "Week"
+msgstr "Semana"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.res_config_settings_view_form_inherit
+msgid "What happens when the worker exceeds the entry or exit tolerance window of the schedule line."
+msgstr "Qué ocurre cuando el trabajador excede la tolerancia de ingreso o de salida de la línea de horario."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_overtime_form
+msgid "What justifies the additional time?"
+msgstr "¿Qué justifica el tiempo adicional?"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence_type__is_paid
+msgid "Whether the employee keeps full pay during this absence."
+msgstr "Indica si el empleado mantiene su remuneración completa durante esta ausencia."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__window_end_dt
+msgid "Window end"
+msgstr "Fin de la ventana"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__window_start_dt
+msgid "Window start"
+msgstr "Inicio de la ventana"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "With incongruency"
+msgstr "Con incongruencia"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "With late"
+msgstr "Con tardanza"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "With unauthorized absence"
+msgstr "Con ausencia injustificada"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_schedule_line
+msgid "Work Schedule Line"
+msgstr "Línea de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_schedule
+msgid "Work Schedule Template"
+msgstr "Plantilla de horario"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday_overtime__workday_id
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_form
+msgid "Workday"
+msgstr "Jornada"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_workday.py:0
+msgid "Workday %s is locked. Unlock it first to reprocess."
+msgstr "La jornada %s está bloqueada. Desbloquéela para volver a procesarla."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_workday_analysis
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_workday_analysis
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_graph
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_pivot
+msgid "Workday Analysis"
+msgstr "Análisis de jornadas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.res_config_settings_view_form_inherit
+msgid "Workday calculation"
+msgstr "Cálculo de jornadas"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/wizards/hr_workday_generate_wizard.py:0
+msgid "Workday generation"
+msgstr "Generación de jornadas"
+
+#. module: hr_attendance_engine
+#: model:ir.model,name:hr_attendance_engine.model_hr_workday
+msgid "Workday snapshot per (employee, date)"
+msgstr "Fotografía de la jornada por (empleado, fecha)"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__workday_id
+msgid "Workday this overtime belongs to. Linked when either of the two is created, whichever comes last."
+msgstr "Jornada a la que pertenecen estas horas adicionales. Se enlazan al crear cualquiera de las dos, la que llegue última."
+
+#. module: hr_attendance_engine
+#: model:ir.actions.act_window,name:hr_attendance_engine.action_hr_workday
+#: model:ir.ui.menu,name:hr_attendance_engine.menu_hr_workday
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.hr_department_view_kanban_engine_inherit
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_list
+msgid "Workdays"
+msgstr "Jornadas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.actions.act_window,help:hr_attendance_engine.action_hr_workday
+msgid ""
+"Workdays are produced by the engine from schedule assignments\n"
+"            and attendances. Each row is the frozen snapshot of one\n"
+"            (employee, date)."
+msgstr ""
+"El motor genera las jornadas a partir de las asignaciones de horario\n"
+"            y las marcaciones. Cada fila es la fotografía congelada de un\n"
+"            (empleado, fecha)."
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__worked_hours
+msgid "Worked hours"
+msgstr "Horas laboradas"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_employee_form_inherit
+msgid "Worked hours this month"
+msgstr "Horas trabajadas este mes"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,field_description:hr_attendance_engine.field_hr_workday__holiday_worked_hours
+msgid "Worked on holiday/rest"
+msgstr "Trabajado en feriado/descanso"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields.selection,name:hr_attendance_engine.selection__hr_workday__day_type__working
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_workday_search
+msgid "Working"
+msgstr "Laborable"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_absence__duration_hours
+msgid "Working hours the absence covers according to the employee's assigned schedule (rest days count 0)."
+msgstr "Horas de trabajo que cubre la ausencia según el horario asignado al empleado (los días de descanso cuentan 0)."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.report_absence_document
+msgid "Yes"
+msgstr "Sí"
+
+#. module: hr_attendance_engine
+#. odoo-python
+#: code:addons/hr_attendance_engine/models/hr_absence.py:0
+msgid "You cannot approve your own request. Ask another officer."
+msgstr "No puede aprobar su propia solicitud. Pídaselo a otro responsable."
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_public_holiday_form
+msgid "e.g. Independence Day"
+msgstr "p. ej. Fiestas Patrias"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_schedule_form
+msgid "e.g. Standard Week"
+msgstr "ej. Semana estándar"
+
+#. module: hr_attendance_engine
+#: model_terms:ir.ui.view,arch_db:hr_attendance_engine.view_hr_absence_type_form
+msgid "e.g. Vacation"
+msgstr "ej. Vacaciones"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__duration_hours
+msgid "hour_to - hour_from."
+msgstr "hora hasta - hora desde."
+
+#. module: hr_attendance_engine
+#. odoo-javascript
+#: code:addons/hr_attendance_engine/static/src/attendance_review/attendance_review.xml:0
+msgid "reviewed"
+msgstr "revisados"
+
+#. module: hr_attendance_engine
+#: model:ir.model.fields,help:hr_attendance_engine.field_hr_workday_overtime__type
+msgid ""
+"• Paid overtime — feeds payroll as extra paid hours.\n"
+"• Compensatory — adds to the employee's compensatory balance, later consumed by compensatory absences."
+msgstr ""
+"• Horas extras pagadas · alimentan la planilla como horas pagadas adicionales.\n"
+"• Compensatorias · suman al saldo compensatorio del empleado, que luego se consume con ausencias compensatorias."

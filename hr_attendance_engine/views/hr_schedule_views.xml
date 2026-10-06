@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_schedule_list" model="ir.ui.view">
+        <field name="name">hr.schedule.list</field>
+        <field name="model">hr.schedule</field>
+        <field name="arch" type="xml">
+            <list string="Schedules">
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_schedule_form" model="ir.ui.view">
+        <field name="name">hr.schedule.form</field>
+        <field name="model">hr.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Schedule">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Standard Week"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active" invisible="1"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lines" name="lines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="day_of_week"/>
+                                    <field name="is_rest_day"/>
+                                    <field name="planned_entry" widget="float_time" invisible="is_rest_day" required="not is_rest_day"/>
+                                    <field name="planned_exit" widget="float_time" invisible="is_rest_day" required="not is_rest_day"/>
+                                    <field name="crosses_midnight" invisible="is_rest_day" optional="show"/>
+                                    <field name="entry_tolerance_minutes" invisible="is_rest_day" optional="hide"/>
+                                    <field name="exit_tolerance_minutes" invisible="is_rest_day" optional="hide"/>
+                                    <field name="has_break" invisible="is_rest_day"/>
+                                    <field name="break_start" widget="float_time" invisible="is_rest_day or not has_break" required="not is_rest_day and has_break"/>
+                                    <field name="break_end" widget="float_time" invisible="is_rest_day or not has_break" required="not is_rest_day and has_break"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_schedule_search" model="ir.ui.view">
+        <field name="name">hr.schedule.search</field>
+        <field name="model">hr.schedule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_schedule" model="ir.actions.act_window">
+        <field name="name">Schedules</field>
+        <field name="res_model">hr.schedule</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first schedule template</p>
+            <p>A schedule template carries one line per day of the week
+            (entry, exit, break, tolerances). Then assign the template to
+            employees day by day.</p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_attendance_document">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <t t-call="hr_attendance_engine.report_styles"/>
+
+                    <t t-foreach="blocks" t-as="block">
+                        <t t-foreach="block['weeks']" t-as="week">
+                            <div t-att-style="
+                                'page-break-after: always;'
+                                if not (block_last and week_last) else ''">
+
+                                <div class="o_att_head">
+                                    <div>
+                                        <div style="font-size:13px; font-weight:bold;"
+                                             t-out="company.name"/>
+                                        <div t-att-style="'font-size:12px; font-weight:bold; color:%s;' % brand"
+                                             t-out="block['employee'].name"/>
+                                    </div>
+                                    <div class="text-center">
+                                        <div t-att-style="'font-size:16px; font-weight:bold; color:%s;' % brand">
+                                            ATTENDANCE REPORT
+                                        </div>
+                                        <div style="font-size:11px; font-weight:bold;">
+                                            FROM:
+                                            <span t-out="week['date_from']"
+                                                  t-options="{'widget': 'date'}"/>
+                                            TO:
+                                            <span t-out="week['date_to']"
+                                                  t-options="{'widget': 'date'}"/>
+                                        </div>
+                                    </div>
+                                    <div class="text-end" style="font-size:10px; font-weight:bold;">
+                                        PRINTED:
+                                        <span t-out="printed_on"
+                                              t-options="{'widget': 'datetime'}"/>
+                                    </div>
+                                </div>
+
+                                <table class="o_att_table">
+                                    <thead>
+                                        <tr t-att-style="'color:%s;' % brand">
+                                            <th>Date</th>
+                                            <th>Day</th>
+                                            <th>Schedule</th>
+                                            <th>Code</th>
+                                            <th>Check-in</th>
+                                            <th>Check-out</th>
+                                            <th>Hrs .E</th>
+                                            <th>Hrs .P</th>
+                                            <th>Hrs .W</th>
+                                            <th>Break<br/>Hrs.</th>
+                                            <th>Late<br/>In</th>
+                                            <th>Late<br/>Break</th>
+                                            <th>Late<br/>Total</th>
+                                            <th>Early<br/>Leave</th>
+                                            <th>Leave<br/>Hrs.</th>
+                                            <th>Hrs. to<br/>Deduct</th>
+                                            <th>Holiday<br/>Worked</th>
+                                            <th>Paid<br/>Overtime</th>
+                                            <th>Comp.<br/>Overtime</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="week['rows']" t-as="row"
+                                            t-att-style="'color:#c00;' if row['incongruency'] else ''">
+                                            <td t-out="row['date']"
+                                                t-options="{'widget': 'date'}"/>
+                                            <td t-out="row['day_name']"/>
+                                            <td class="o_att_sched" t-out="row['schedule']"/>
+                                            <td>
+                                                <strong t-att-style="'color:%s;' % brand"
+                                                        t-out="row['absence_codes']"/>
+                                                <strong t-if="row['is_absent']"
+                                                        style="color:#c00;">F</strong>
+                                            </td>
+                                            <td t-out="row['entries']"/>
+                                            <td t-out="row['exits']"/>
+                                            <td t-out="row['expected']"/>
+                                            <td t-out="row['punch']"/>
+                                            <td t-out="row['worked']"/>
+                                            <td t-out="row['brk']"/>
+                                            <td t-out="row['late']"/>
+                                            <td t-out="row['late_break']"/>
+                                            <td t-out="row['late_total']"/>
+                                            <td t-out="row['early']"/>
+                                            <td t-out="row['leave']"/>
+                                            <td t-out="row['discount']"/>
+                                            <td t-out="row['holiday']"/>
+                                            <td t-out="row['ot_paid']"/>
+                                            <td t-out="row['ot_comp']"/>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="o_att_total"
+                                            t-att-style="'color:%s;' % brand">
+                                            <td/>
+                                            <td>TOTAL</td>
+                                            <td/><td/><td/><td/>
+                                            <td t-out="week['totals']['expected']"/>
+                                            <td t-out="week['totals']['punch']"/>
+                                            <td t-out="week['totals']['worked']"/>
+                                            <td t-out="week['totals']['brk']"/>
+                                            <td t-out="week['totals']['late']"/>
+                                            <td t-out="week['totals']['late_break']"/>
+                                            <td t-out="week['totals']['late_total']"/>
+                                            <td t-out="week['totals']['early']"/>
+                                            <td t-out="week['totals']['leave']"/>
+                                            <td t-out="week['totals']['discount']"/>
+                                            <td t-out="week['totals']['holiday']"/>
+                                            <td t-out="week['totals']['ot_paid']"/>
+                                            <td t-out="week['totals']['ot_comp']"/>
+                                        </tr>
+                                        <tr t-if="week_last" class="o_att_total"
+                                            style="color:#8b2331;">
+                                            <td/>
+                                            <td>GRAND TOTAL</td>
+                                            <td/><td/><td/><td/>
+                                            <td t-out="block['totals']['expected']"/>
+                                            <td t-out="block['totals']['punch']"/>
+                                            <td t-out="block['totals']['worked']"/>
+                                            <td t-out="block['totals']['brk']"/>
+                                            <td t-out="block['totals']['late']"/>
+                                            <td t-out="block['totals']['late_break']"/>
+                                            <td t-out="block['totals']['late_total']"/>
+                                            <td t-out="block['totals']['early']"/>
+                                            <td t-out="block['totals']['leave']"/>
+                                            <td t-out="block['totals']['discount']"/>
+                                            <td t-out="block['totals']['holiday']"/>
+                                            <td t-out="block['totals']['ot_paid']"/>
+                                            <td t-out="block['totals']['ot_comp']"/>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                                <table class="o_att_legend">
+                                    <tr>
+                                        <td style="vertical-align:top; width:45%;">
+                                            <table>
+                                                <tr t-foreach="legend" t-as="atype">
+                                                    <td>
+                                                        <strong t-att-style="'color:%s;' % brand"
+                                                                t-out="atype.code"/>
+                                                    </td>
+                                                    <td t-out="atype.name"/>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="vertical-align:top;">
+                                            <div>
+                                                <strong t-att-style="'color:%s;' % brand">Hrs .E:</strong>
+                                                Hours expected from the assigned schedule.
+                                            </div>
+                                            <div>
+                                                <strong t-att-style="'color:%s;' % brand">Hrs .P:</strong>
+                                                Hours from punches (not clipped to the schedule).
+                                            </div>
+                                            <div>
+                                                <strong t-att-style="'color:%s;' % brand">Hrs .W:</strong>
+                                                Hours actually worked, overtime excluded.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>
